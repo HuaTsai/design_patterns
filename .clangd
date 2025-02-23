@@ -1,0 +1,21 @@
+CompileFlags:
+  Add: 
+    - "-I../include"
+    - "-std=c++20"
+    - "-Wall"
+    - "-Wextra"
+Diagnostics:
+  ClangTidy:
+    Add:
+      - '*'
+    Remove:
+      - fuchsia-default-arguments-calls
+      - llvmlibc-implementation-in-namespace
+      - llvmlibc-inline-function-decl
+      - llvmlibc-callee-namespace
+      - llvmlibc-restrict-system-libc-headers
+      - altera-unroll-loops
+      - readability-identifier-length
+      - modernize-use-trailing-return-type
+      - bugprone-easily-swappable-parameters
+    FastCheckFilter: None
