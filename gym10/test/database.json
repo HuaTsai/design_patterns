@@ -1,0 +1,82 @@
+[
+  {
+    "id": "Y217984148",
+    "name": "Uma",
+    "gender": "Female",
+    "age": 6,
+    "height": 281.73,
+    "weight": 143.41,
+    "cases": []
+  },
+  {
+    "id": "R229167965",
+    "name": "Lily",
+    "gender": "Female",
+    "age": 18,
+    "height": 309.02,
+    "weight": 234.37,
+    "cases": []
+  },
+  {
+    "id": "P185021917",
+    "name": "Mason",
+    "gender": "Male",
+    "age": 23,
+    "height": 380.70,
+    "weight": 461.93,
+    "cases": []
+  },
+  {
+    "id": "T249840681",
+    "name": "Victor",
+    "gender": "Female",
+    "age": 111,
+    "height": 208.41,
+    "weight": 286.17,
+    "cases": [
+      {
+        "time": 3,
+        "symptoms": [
+          "Sneeze",
+          "Headache",
+          "Cough",
+          "Snore"
+        ],
+        "prescription": {
+          "medicines": [
+            "清冠一號"
+          ],
+          "name": "清冠一號",
+          "potential_disease": "新冠肺炎",
+          "usage": "將相關藥材裝入茶包裡，使用500 mL 溫、熱水沖泡悶煮1~3 分鐘後即可飲用。"
+        }
+      },
+      {
+        "time": 3,
+        "symptoms": [
+          "Sneeze",
+          "Headache",
+          "Cough",
+          "Snore"
+        ],
+        "prescription": {
+          "medicines": [
+            "清冠一號"
+          ],
+          "name": "清冠一號",
+          "potential_disease": "新冠肺炎",
+          "usage": "將相關藥材裝入茶包裡，使用500 mL 溫、熱水沖泡悶煮1~3 分鐘後即可飲用。"
+        }
+      }
+    ]
+  },
+  {
+    "id": "J199661596",
+    "name": "Rachel",
+    "gender": "Male",
+    "age": 101,
+    "height": 35.87,
+    "weight": 165.25,
+    "cases": []
+  }
+]
