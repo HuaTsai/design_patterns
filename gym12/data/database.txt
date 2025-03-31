@@ -1,0 +1,8 @@
+id name age subordinateIds
+1 waterball 25 2,3
+2 fixiabis 15 6
+3 fong 7 4,5
+4 cc 18
+5 peterchen 3
+6 handsomeboy 22 7
+7 beautifulgirl 20 8
