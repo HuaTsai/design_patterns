@@ -1,0 +1,36 @@
+{
+  "loggers": {
+    "level": "DEBUG",
+    "exporter": {
+      "type": "console"
+    },
+    "layout": "standard",
+    "app.game": {
+      "level": "INFO",
+      "exporter": {
+        "type": "composite",
+        "children": [
+          {
+            "type": "console"
+          },
+          {
+            "type": "composite",
+            "children": [
+              {
+                "type": "file",
+                "filename": "game.log"
+              },
+              {
+                "type": "file",
+                "filename": "game.backup.log"
+              }
+            ]
+          }
+        ]
+      },
+      "app.game.ai": {
+        "level": "TRACE"
+      }
+    }
+  }
+}
