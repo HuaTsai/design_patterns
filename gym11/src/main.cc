@@ -3,7 +3,7 @@
 
 int main() {
   auto adapter = std::make_shared<SuperRelationshipAnalyzerAdapter>();
-  auto graph = adapter->Parse("../data/script.txt");
+  auto graph = adapter->Parse("gym11/data/script.txt");
 
   auto fs1 = adapter->GetMutualFriends("A", "B");
   std::print("Mutual friends of A and B: ");

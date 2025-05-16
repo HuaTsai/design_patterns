@@ -26,7 +26,7 @@ int main() {
                                   std::make_shared<StandardLayout>());
 
   // Option 2: Initialize loggers from JSON
-  // Logger::InitLoggersFromJson("../data/config.json");
+  // Logger::InitLoggersFromJson("gym13/data/config.json");
 
   auto MakeDecision = [](int ai_id) {
     auto log = Logger::GetLogger("app.game.ai");

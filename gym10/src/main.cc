@@ -2,7 +2,7 @@
 #include <print>
 
 int main() {
-  PrescribeSystem system("../test/database.json", "../test/support.txt");
+  PrescribeSystem system("gym10/data/database.json", "gym10/data/support.txt");
 
   auto pre1 = system.Prescribe("Lily", {Symptom::kSneeze});
   std::print("Lily 的處方是: {}\n", pre1.name());

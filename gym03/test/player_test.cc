@@ -8,8 +8,7 @@
 TEST(AIPlayerTest, UNODrawThenShow) {
   auto deck = Deck::CreateUNODeck();
   for (int i = 0; i < 40; i++) deck->Deal();
-  std::vector<std::shared_ptr<Card>> cards = {
-      std::make_shared<UNOCard>(Color::kRed, Number::kTwo)};
+  std::vector<std::shared_ptr<Card>> cards = {std::make_shared<UNOCard>(Color::kRed, Number::kTwo)};
   deck->AddCards(cards);
   auto topcard = std::make_shared<UNOCard>(Color::kRed, Number::kOne);
 
@@ -43,8 +42,7 @@ TEST(HumanPlayerTest, UNODrawThenShow) {
 
   auto deck = Deck::CreateUNODeck();
   for (int i = 0; i < 40; i++) deck->Deal();
-  std::vector<std::shared_ptr<Card>> cards = {
-      std::make_shared<UNOCard>(Color::kRed, Number::kTwo)};
+  std::vector<std::shared_ptr<Card>> cards = {std::make_shared<UNOCard>(Color::kRed, Number::kTwo)};
   deck->AddCards(cards);
   auto topcard = std::make_shared<UNOCard>(Color::kRed, Number::kOne);
 

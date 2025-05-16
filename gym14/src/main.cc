@@ -6,9 +6,9 @@
 
 int main() {
   auto client = std::make_shared<ServiceDiscoveryUrlProcerssor>(
-      "../config/services.txt",
+      "gym14/config/services.txt",
       std::make_shared<LoadBalancingUrlProcessor>(std::make_shared<BlacklistUrlProcessor>(
-          "../config/blacklist.txt", std::make_shared<FakeHttpClient>())));
+          "gym14/config/blacklist.txt", std::make_shared<FakeHttpClient>())));
   auto response1 = client->SendRequest({"http://waterballsa.tw/test"})[0];
   std::print("{}\n", response1);
   auto response2 = client->SendRequest({"http://waterballsa.tw/test"})[0];

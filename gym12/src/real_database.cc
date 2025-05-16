@@ -5,7 +5,7 @@
 #include <virtual_employee_proxy.hpp>
 
 std::shared_ptr<Employee> RealDatabase::GetEmployeeById(int id) {
-  std::ifstream ifs("../data/database.txt");
+  std::ifstream ifs("gym12/data/database.txt");
   if (!ifs) {
     throw std::runtime_error("Failed to open database file");
   }
