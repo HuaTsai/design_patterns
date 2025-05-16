@@ -11,7 +11,14 @@ class Game;
 
 class Player {
  public:
-  Player(std::weak_ptr<Game> game);
+  explicit Player(std::weak_ptr<Game> game);
+
+  virtual ~Player() = default;
+  Player(const Player &) = delete;
+  Player &operator=(const Player &) = delete;
+  Player(Player &&) = delete;
+  Player &operator=(Player &&) = delete;
+
   void AddOnePoint();
   std::shared_ptr<Card> Draw(std::shared_ptr<Deck> deck);
   void Exchange(std::shared_ptr<Player> player);
@@ -21,9 +28,11 @@ class Player {
 
   void set_name(const std::string &name);
   std::string name() const;
+  std::vector<std::shared_ptr<Card>> &hand();
   int points() const;
+  std::shared_ptr<Game> game();
 
- protected:
+ private:
   std::string name_;
   std::vector<std::shared_ptr<Card>> hand_;
   int points_;

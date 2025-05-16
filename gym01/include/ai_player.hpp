@@ -6,8 +6,7 @@
 
 class AIPlayer : public Player {
  public:
-  AIPlayer(std::weak_ptr<Game> game);
-  ~AIPlayer();
+  explicit AIPlayer(std::weak_ptr<Game> game);
   std::optional<int> MakeExchangeDecision() override;
   std::shared_ptr<Card> Show() override;
 

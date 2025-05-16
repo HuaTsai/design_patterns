@@ -4,15 +4,13 @@
 
 AIPlayer::AIPlayer(std::weak_ptr<Game> game) : Player(game), rng_(std::random_device{}()) {}
 
-AIPlayer::~AIPlayer() {}
-
 std::optional<int> AIPlayer::MakeExchangeDecision() {
   std::cout << "AI making decision... ";
   std::uniform_int_distribution<> dis(0, 1);
   if (dis(rng_)) {
     std::cout << "do exchange\n";
-    if (auto game = game_.lock()) {
-      auto players = game->players();
+    if (auto g = game()) {
+      auto players = g->players();
       std::vector<std::pair<int, std::shared_ptr<Player>>> options;
       for (size_t i = 0; i < players.size(); ++i) {
         if (players[i].get() != this) {
@@ -34,17 +32,17 @@ std::optional<int> AIPlayer::MakeExchangeDecision() {
 }
 
 std::shared_ptr<Card> AIPlayer::Show() {
-  if (!hand_.size()) {
-    std::cout << std::format("{} has no available card, skip\n", name_);
+  if (!hand().size()) {
+    std::cout << std::format("{} has no available card, skip\n", name());
     return nullptr;
   }
-  std::cout << std::format("{} chooses card, AI making decision...\n", name_);
-  std::uniform_int_distribution<> dis(0, static_cast<int>(hand_.size()) - 1);
+  std::cout << std::format("{} chooses card, AI making decision...\n", name());
+  std::uniform_int_distribution<> dis(0, static_cast<int>(hand().size()) - 1);
   int idx = dis(rng_);
 
-  auto ret = hand_[idx];
-  swap(hand_[idx], hand_.back());
-  hand_.pop_back();
-  std::cout << std::format("{} shows {}\n", name_, *ret);
+  auto ret = hand()[idx];
+  swap(hand()[idx], hand().back());
+  hand().pop_back();
+  std::cout << std::format("{} shows {}\n", name(), *ret);
   return ret;
 }

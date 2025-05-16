@@ -6,16 +6,14 @@
 
 HumanPlayer::HumanPlayer(std::weak_ptr<Game> game) : Player(game) {}
 
-HumanPlayer::~HumanPlayer() {}
-
 std::optional<int> HumanPlayer::MakeExchangeDecision() {
-  std::cout << std::format("{}'s Decision (Y/N)? ", name_);
+  std::cout << std::format("{}'s Decision (Y/N)? ", name());
   char c;
   std::cin >> c;
   if (std::tolower(c) == 'y') {
-    if (auto game = game_.lock()) {
-      auto players = game->players();
-      std::cout << std::format("Which player do {} want to exchange hands?\n", name_);
+    if (auto g = game()) {
+      auto players = g->players();
+      std::cout << std::format("Which player do {} want to exchange hands?\n", name());
 
       std::unordered_set<int> options;
       for (size_t i = 0; i < players.size(); ++i) {
@@ -24,7 +22,7 @@ std::optional<int> HumanPlayer::MakeExchangeDecision() {
           std::cout << std::format("{}: {}\n", i + 1, players[i]->name());
         }
       }
-      std::cout << std::format("{}'s Option? ", name_);
+      std::cout << std::format("{}'s Option? ", name());
 
       int index;
       std::cin >> index;
@@ -46,30 +44,30 @@ std::optional<int> HumanPlayer::MakeExchangeDecision() {
 }
 
 std::shared_ptr<Card> HumanPlayer::Show() {
-  if (!hand_.size()) {
-    std::cout << std::format("{} has no available card, skip\n", name_);
+  if (!hand().size()) {
+    std::cout << std::format("{} has no available card, skip\n", name());
     return nullptr;
   }
-  std::cout << std::format("{} chooses card:\n", name_);
-  for (size_t i = 0; i < hand_.size(); ++i) {
-    std::cout << std::format("{}: {}\n", i + 1, *hand_[i]);
+  std::cout << std::format("{} chooses card:\n", name());
+  for (size_t i = 0; i < hand().size(); ++i) {
+    std::cout << std::format("{}: {}\n", i + 1, *hand()[i]);
   }
 
-  if (hand_.size() == 1) {
-    std::cout << std::format("{}'s Decision (1)? ", name_);
+  if (hand().size() == 1) {
+    std::cout << std::format("{}'s Decision (1)? ", name());
   } else {
-    std::cout << std::format("{}'s Decision (1~{})? ", name_, hand_.size());
+    std::cout << std::format("{}'s Decision (1~{})? ", name(), hand().size());
   }
 
   int idx;
   std::cin >> idx;
-  if (idx <= 0 || idx > static_cast<int>(hand_.size())) {
+  if (idx <= 0 || idx > static_cast<int>(hand().size())) {
     throw std::runtime_error("Invlaid option!");
   }
 
-  auto ret = hand_[idx - 1];
-  swap(hand_[idx - 1], hand_.back());
-  hand_.pop_back();
-  std::cout << std::format("{} shows {}\n", name_, *ret);
+  auto ret = hand()[idx - 1];
+  swap(hand()[idx - 1], hand().back());
+  hand().pop_back();
+  std::cout << std::format("{} shows {}\n", name(), *ret);
   return ret;
 }

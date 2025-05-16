@@ -18,4 +18,8 @@ void Player::set_name(const std::string &name) { name_ = name; }
 
 std::string Player::name() const { return name_; }
 
+std::vector<std::shared_ptr<Card>> &Player::hand() { return hand_; }
+
 int Player::points() const { return points_; }
+
+std::shared_ptr<Game> Player::game() { return game_.lock(); }
