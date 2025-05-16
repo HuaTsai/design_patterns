@@ -48,7 +48,7 @@ void World::Draw() const {
 }
 
 void World::Move(int x1, int x2) {
-  if (x1 < 0 || x1 < 0 || x1 >= kWorldLength || x2 >= kWorldLength) {
+  if (x1 < 0 || x2 < 0 || x1 >= kWorldLength || x2 >= kWorldLength) {
     std::cout << "Out of range coordinate(s)\n";
     return;
   }

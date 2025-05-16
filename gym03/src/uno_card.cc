@@ -18,7 +18,6 @@ std::string UNOCard::string() const {
       break;
     default:
       throw std::runtime_error("Invalid color");
-      break;
   }
 
   ret += " ";
@@ -56,7 +55,6 @@ std::string UNOCard::string() const {
       break;
     default:
       throw std::runtime_error("Invalid number");
-      break;
   }
 
   return ret;

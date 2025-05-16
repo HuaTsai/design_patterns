@@ -55,7 +55,6 @@ std::string Card::string() const {
       break;
     default:
       throw std::runtime_error("Unknown number!");
-      break;
   }
 
   ret += " of ";
@@ -75,7 +74,6 @@ std::string Card::string() const {
       break;
     default:
       throw std::runtime_error("Unknown suit!");
-      break;
   }
 
   return ret;

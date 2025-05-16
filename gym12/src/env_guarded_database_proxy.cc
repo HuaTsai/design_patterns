@@ -13,7 +13,6 @@ std::shared_ptr<Employee> EnvGuardedDatabaseProxy::GetEmployeeById(int id) {
     const char *password = secure_getenv("PASSWORD");
     if (password == nullptr || std::string(password) != "1qaz2wsx") {
       throw std::runtime_error("Unauthorized access");
-      return nullptr;
     }
     access_granted = true;
     std::println("Access granted");

@@ -30,16 +30,12 @@ Options Character::ActionNormal() {
       switch (ch) {
         case 'A':
           return Options::kMoveUp;
-          break;
         case 'B':
           return Options::kMoveDown;
-          break;
         case 'D':
           return Options::kMoveLeft;
-          break;
         case 'C':
           return Options::kMoveRight;
-          break;
         default:
           break;
       }
@@ -62,10 +58,8 @@ Options Character::ActionLeftRight() {
       switch (ch) {
         case 'D':
           return Options::kMoveLeft;
-          break;
         case 'C':
           return Options::kMoveRight;
-          break;
         default:
           break;
       }
@@ -86,10 +80,8 @@ Options Character::ActionUpDown() {
       switch (ch) {
         case 'A':
           return Options::kMoveUp;
-          break;
         case 'B':
           return Options::kMoveDown;
-          break;
         default:
           break;
       }

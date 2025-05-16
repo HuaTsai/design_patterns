@@ -21,7 +21,6 @@ void Role::Move(Direction direction) {
       break;
     default:
       throw std::runtime_error("Invalid direction");
-      break;
   }
 }
 

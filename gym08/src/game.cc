@@ -326,8 +326,6 @@ std::pair<int, int> Game::GetRandomEmptyPosition() const {
       return {i, j};
     }
   }
-
-  return {-1, -1};
 }
 
 bool Game::IsFinish() const { return !winner_.empty(); }

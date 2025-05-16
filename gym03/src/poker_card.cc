@@ -44,7 +44,6 @@ std::string PokerCard::string() const {
       break;
     default:
       throw std::runtime_error("Invalid rank");
-      break;
   }
 
   ret += " of ";
@@ -64,7 +63,6 @@ std::string PokerCard::string() const {
       break;
     default:
       throw std::runtime_error("Invalid suit");
-      break;
   }
 
   return ret;
