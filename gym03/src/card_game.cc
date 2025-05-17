@@ -8,13 +8,13 @@ CardGame::CardGame(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Playe
 
 void CardGame::PreparePhase() {
   deck_->Shuffle();
-  for (auto &player : players()) {
+  for (const auto &player : players()) {
     player->NameSelf();
   }
 }
 
 void CardGame::DrawPhase() {
-  for (auto &player : players()) {
+  for (const auto &player : players()) {
     for (int i = 0; i < player_initial_cards_; i++) {
       player->Draw(deck_);
     }

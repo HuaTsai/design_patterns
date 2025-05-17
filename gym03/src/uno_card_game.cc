@@ -10,7 +10,7 @@ void UNOCardGame::PlayPhase() {
   const std::shared_ptr<Card> topcard = deck()->Deal();
   discard_cards_.push_back(topcard);
 
-  for (auto &player : players()) {
+  for (const auto &player : players()) {
     player->UpdateTopCard(topcard);
   }
 
@@ -21,7 +21,7 @@ void UNOCardGame::PlayPhase() {
     if (card) {
       std::cout << std::format("{} plays {}\n", players()[i]->name(), card);
       discard_cards_.push_back(card);
-      for (auto &player : players()) {
+      for (const auto &player : players()) {
         player->UpdateTopCard(card);
       }
       if (players()[i]->IsEmptyHand()) {

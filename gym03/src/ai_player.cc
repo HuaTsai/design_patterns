@@ -6,7 +6,7 @@
 #include "uno_card.hpp"
 
 namespace {
-const std::array<std::string, 19> name_candidates = {
+const std::array<std::string_view, 19> name_candidates = {
     "Liam", "Noah", "Ryan", "Luke", "Evan", "Adam", "Jake", "Alex", "Sean", "Emma",
     "Lily", "Mia",  "Zoe",  "Anna", "Ruby", "Eva",  "Kate", "Nora", "Jane",
 };
@@ -37,7 +37,7 @@ std::shared_ptr<Card> AIPlayer::Show() {
   }
 
   std::mt19937 gen(std::random_device{}());
-  std::uniform_int_distribution<> dis(0, static_cast<int>(options.size()) - 1);
+  std::uniform_int_distribution dis(0, static_cast<int>(options.size()) - 1);
   const int idx = dis(gen);
   auto ret = options[idx];
   std::erase(hand(), ret);
