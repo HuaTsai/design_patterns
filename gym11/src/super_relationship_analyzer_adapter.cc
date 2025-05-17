@@ -1,4 +1,3 @@
-#include <cstdio>
 #include <filesystem>
 #include <fstream>
 #include <relationship_graph_impl.hpp>
