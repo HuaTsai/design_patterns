@@ -6,8 +6,8 @@
 
 namespace {
 char getkey() {
-  struct termios oldt {};
-  struct termios newt {};
+  struct termios oldt;  // NOLINT
+  struct termios newt;  // NOLINT
   char ch = 0;
   tcgetattr(STDIN_FILENO, &oldt);
   newt = oldt;
