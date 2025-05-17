@@ -43,7 +43,7 @@ void UNOCardGame::PlayPhase() {
     }
 
     ++i;
-    if (std::cmp_equal(i ,players().size())) {
+    if (std::cmp_equal(i, players().size())) {
       i = 0;
       std::cout << "\n";
     }

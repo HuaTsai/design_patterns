@@ -37,7 +37,7 @@ std::shared_ptr<Card> HumanPlayer::Show() {
   std::cout << std::format("? (1-{}) ", options.size());
   int idx = 0;
   std::cin >> idx;
-  if (idx < 1 || std::cmp_greater(idx ,options.size())) {
+  if (idx < 1 || std::cmp_greater(idx, options.size())) {
     throw std::runtime_error("Invalid input");
   }
   auto ret = options[idx - 1];

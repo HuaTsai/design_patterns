@@ -1,9 +1,9 @@
+#include <cstdio>
 #include <filesystem>
 #include <fstream>
 #include <relationship_graph_impl.hpp>
 #include <sstream>
 #include <super_relationship_analyzer_adapter.hpp>
-#include <cstdio>
 
 std::shared_ptr<RelationshipGraph> SuperRelationshipAnalyzerAdapter::Parse(std::string script) {
   std::ifstream ifs(script);

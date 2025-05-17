@@ -20,6 +20,19 @@ jobs:
         cmake: true
         clang-format: true
 
+    - name: Check coding style
+      run: |
+        FAILED=0
+        FILES=$(find . \( -name "*.cc" -o -name "*.hpp" \) -not -path "*/json.hpp")
+        for FILE in $FILES; do
+          clang-format --dry-run -Werror "$FILE"
+          if [ "$?" -ne 0 ]; then
+            echo "clang-format failed for $FILE"
+            FAILED=1
+          fi
+        done
+        exit $FAILED
+
     - name: Configure CMake
       run: cmake -B build
 
