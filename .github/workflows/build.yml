@@ -22,6 +22,7 @@ jobs:
 
     - name: Check coding style
       run: |
+        clang-format --version
         FAILED=0
         FILES=$(find . \( -name "*.cc" -o -name "*.hpp" \) -not -path "*/json.hpp")
         for FILE in $FILES; do
