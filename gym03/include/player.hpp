@@ -23,7 +23,7 @@ class Player {
   virtual std::shared_ptr<Card> Show() = 0;
   bool IsEmptyHand() const;
 
-  void set_name(const std::string &name) { name_ = name; }
+  void set_name(std::string_view name) { name_ = name; }
   Type type() const;
   int points() const;
   std::string name() const;

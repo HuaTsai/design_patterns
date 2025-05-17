@@ -15,7 +15,7 @@ void HumanPlayer::NameSelf() {
 
 std::shared_ptr<Card> HumanPlayer::Show() {
   std::vector<std::shared_ptr<Card>> options;
-  for (auto &card : hand()) {
+  for (const auto &card : hand()) {
     if (type() == Player::Type::kUNO) {
       auto unocard = dynamic_pointer_cast<UNOCard>(card);
       auto tpcard = dynamic_pointer_cast<UNOCard>(topcard());

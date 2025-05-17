@@ -7,7 +7,7 @@
 
 class CardPattern {
  public:
-  CardPattern(std::vector<std::shared_ptr<Card>> cards, std::string name);
+  explicit CardPattern(std::vector<std::shared_ptr<Card>> cards, std::string name);
   virtual ~CardPattern() = default;
   std::strong_ordering operator<=>(const CardPattern &other) const;
   std::string string() const;
