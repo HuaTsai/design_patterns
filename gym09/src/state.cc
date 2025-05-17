@@ -33,7 +33,9 @@ void State::Attack(std::shared_ptr<Role> target, int hp) {
   target->TakeDamage(hp);
 }
 
-void State::ActionStartEvent() {}
+void State::ActionStartEvent() {
+  // Hook of action start event for subclasses
+}
 
 void State::ActionEndEvent() {
   if (remain_turns_ > 0) {

@@ -41,7 +41,9 @@ State::State(const std::shared_ptr<Role> &role, std::string name, int remaining_
       remaining_turns_(remaining_turns),
       pending_state_(nullptr) {}
 
-void State::RoundStartEvent() {}
+void State::RoundStartEvent() {
+  // Hook of round start event for subclasses
+}
 
 void State::HandleDamage(int hp) { role_.lock()->Damage(hp); }
 
@@ -58,7 +60,9 @@ std::shared_ptr<State> State::RoundEndEvent() {
 
 void State::SetPendingState(const std::shared_ptr<State> &state) { pending_state_ = state; }
 
-void InvincibleState::HandleDamage(int /* hp */) {}
+void InvincibleState::HandleDamage(int /* hp */) {
+  // InvincibleState does not take damage
+}
 
 void PoisonedState::RoundStartEvent() { role()->Damage(kDamageEachRound); }
 
