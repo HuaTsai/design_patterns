@@ -3,6 +3,7 @@
 #include <relationship_graph_impl.hpp>
 #include <sstream>
 #include <super_relationship_analyzer_adapter.hpp>
+#include <cstdio>
 
 std::shared_ptr<RelationshipGraph> SuperRelationshipAnalyzerAdapter::Parse(std::string script) {
   std::ifstream ifs(script);
@@ -10,7 +11,10 @@ std::shared_ptr<RelationshipGraph> SuperRelationshipAnalyzerAdapter::Parse(std::
     throw std::runtime_error("Error opening input file");
   }
 
-  const std::string tmp_file = "/tmp/script.txt";
+  char tmp_file[] = "/tmp/script-XXXXXX";
+  if (mkstemp(tmp_file) == -1) {
+    throw std::runtime_error("Error creating temporary file");
+  }
   std::ofstream ofs(tmp_file);
   if (!ofs) {
     throw std::runtime_error("Error opening output file");

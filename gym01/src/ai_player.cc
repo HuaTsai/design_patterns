@@ -7,8 +7,7 @@ AIPlayer::AIPlayer(std::weak_ptr<Game> game) : Player(game), rng_(std::random_de
 std::optional<int> AIPlayer::MakeExchangeDecision() {
   std::cout << "AI making decision... ";
   std::uniform_int_distribution dis(0, 1);
-  const bool exchange = dis(rng_) != 0;
-  if (!exchange) {
+  if (dis(rng_) == 0) {
     std::cout << "do not exchange\n";
     return std::nullopt;
   }
