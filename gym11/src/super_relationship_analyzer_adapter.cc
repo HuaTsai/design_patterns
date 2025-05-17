@@ -10,8 +10,8 @@ std::shared_ptr<RelationshipGraph> SuperRelationshipAnalyzerAdapter::Parse(std::
     throw std::runtime_error("Error opening input file");
   }
 
-  char tmp_file[] = "/tmp/script-XXXXXX";
-  if (mkstemp(tmp_file) == -1) {
+  std::string tmp_file = "/tmp/script-XXXXXX";
+  if (mkstemp(tmp_file.data()) == -1) {
     throw std::runtime_error("Error creating temporary file");
   }
   std::ofstream ofs(tmp_file);

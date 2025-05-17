@@ -4,16 +4,17 @@ std::string UNOCard::string() const {
   std::string ret;
 
   switch (color_) {
-    case Color::kRed:
+    using enum Color;
+    case kRed:
       ret = "Red";
       break;
-    case Color::kYellow:
+    case kYellow:
       ret = "Yellow";
       break;
-    case Color::kGreen:
+    case kGreen:
       ret = "Green";
       break;
-    case Color::kBlue:
+    case kBlue:
       ret = "Blue";
       break;
     default:
@@ -23,34 +24,35 @@ std::string UNOCard::string() const {
   ret += " ";
 
   switch (number_) {
-    case Number::kZero:
+    using enum Number;
+    case kZero:
       ret += "Zero";
       break;
-    case Number::kOne:
+    case kOne:
       ret += "One";
       break;
-    case Number::kTwo:
+    case kTwo:
       ret += "Two";
       break;
-    case Number::kThree:
+    case kThree:
       ret += "Three";
       break;
-    case Number::kFour:
+    case kFour:
       ret += "Four";
       break;
-    case Number::kFive:
+    case kFive:
       ret += "Five";
       break;
-    case Number::kSix:
+    case kSix:
       ret += "Six";
       break;
-    case Number::kSeven:
+    case kSeven:
       ret += "Seven";
       break;
-    case Number::kEight:
+    case kEight:
       ret += "Eight";
       break;
-    case Number::kNine:
+    case kNine:
       ret += "Nine";
       break;
     default:

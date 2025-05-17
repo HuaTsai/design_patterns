@@ -8,25 +8,23 @@
 
 std::shared_ptr<Deck> Deck::CreateUNODeck() {
   std::vector<std::shared_ptr<Card>> cards;
-  // clang-format off
-  for (auto number : {Number::kZero, Number::kOne, Number::kTwo, Number::kThree,
-                      Number::kFour, Number::kFive, Number::kSix,
-                      Number::kSeven, Number::kEight, Number::kNine}) {
-    for (auto color : {Color::kRed, Color::kGreen, Color::kBlue, Color::kYellow}) {
+  using enum Number;
+  using enum Color;
+  for (auto number : {kZero, kOne, kTwo, kThree, kFour, kFive, kSix, kSeven, kEight, kNine}) {
+    for (auto color : {kRed, kGreen, kBlue, kYellow}) {
       cards.push_back(std::make_shared<UNOCard>(color, number));
     }
   }
-  // clang-format on
   return std::shared_ptr<Deck>(new Deck(cards));
 }
 
 std::shared_ptr<Deck> Deck::CreatePokerDeck() {
   std::vector<std::shared_ptr<Card>> cards;
-  // clang-format off
-  for (auto rank : {Rank::kAce, Rank::kTwo, Rank::kThree, Rank::kFour, Rank::kFive,
-                    Rank::kSix, Rank::kSeven, Rank::kEight, Rank::kNine, Rank::kTen,
-                    Rank::kJack, Rank::kQueen, Rank::kKing}) {
-    for (auto suit : {Suit::kClub, Suit::kDiamond, Suit::kHeart, Suit::kSpade}) {
+  using enum Rank;
+  using enum Suit;
+  for (auto rank : {kAce, kTwo, kThree, kFour, kFive, kSix, kSeven, kEight, kNine, kTen, kJack,
+                    kQueen, kKing}) {
+    for (auto suit : {kClub, kDiamond, kHeart, kSpade}) {
       cards.push_back(std::make_shared<PokerCard>(suit, rank));
     }
   }

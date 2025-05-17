@@ -3,43 +3,44 @@
 std::string PokerCard::string() const {
   std::string ret;
   switch (rank_) {
-    case Rank::kAce:
+    using enum Rank;
+    case kAce:
       ret = "Ace";
       break;
-    case Rank::kTwo:
+    case kTwo:
       ret = "Two";
       break;
-    case Rank::kThree:
+    case kThree:
       ret = "Three";
       break;
-    case Rank::kFour:
+    case kFour:
       ret = "Four";
       break;
-    case Rank::kFive:
+    case kFive:
       ret = "Five";
       break;
-    case Rank::kSix:
+    case kSix:
       ret = "Six";
       break;
-    case Rank::kSeven:
+    case kSeven:
       ret = "Seven";
       break;
-    case Rank::kEight:
+    case kEight:
       ret = "Eight";
       break;
-    case Rank::kNine:
+    case kNine:
       ret = "Nine";
       break;
-    case Rank::kTen:
+    case kTen:
       ret = "Ten";
       break;
-    case Rank::kJack:
+    case kJack:
       ret = "Jack";
       break;
-    case Rank::kQueen:
+    case kQueen:
       ret = "Queen";
       break;
-    case Rank::kKing:
+    case kKing:
       ret = "King";
       break;
     default:
@@ -49,16 +50,17 @@ std::string PokerCard::string() const {
   ret += " of ";
 
   switch (suit_) {
-    case Suit::kClub:
+    using enum Suit;
+    case kClub:
       ret += "Clubs";
       break;
-    case Suit::kDiamond:
+    case kDiamond:
       ret += "Diamonds";
       break;
-    case Suit::kHeart:
+    case kHeart:
       ret += "Hearts";
       break;
-    case Suit::kSpade:
+    case kSpade:
       ret += "Spades";
       break;
     default:

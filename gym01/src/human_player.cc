@@ -26,7 +26,7 @@ std::optional<int> HumanPlayer::MakeExchangeDecision() {
 
       int index;
       std::cin >> index;
-      if (!options.count(index)) {
+      if (!options.contains(index)) {
         throw std::runtime_error("Invalid option!");
       }
 

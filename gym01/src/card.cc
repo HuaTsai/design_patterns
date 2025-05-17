@@ -60,16 +60,17 @@ std::string Card::string() const {
   ret += " of ";
 
   switch (suit_) {
-    case Suit::Club:
+    using enum Suit;
+    case Club:
       ret += "Clubs";
       break;
-    case Suit::Diamond:
+    case Diamond:
       ret += "Diamonds";
       break;
-    case Suit::Heart:
+    case Heart:
       ret += "Hearts";
       break;
-    case Suit::Spade:
+    case Spade:
       ret += "Spades";
       break;
     default:

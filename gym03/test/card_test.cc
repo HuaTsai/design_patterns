@@ -3,11 +3,14 @@
 #include "poker_card.hpp"
 #include "uno_card.hpp"
 
+
 TEST(PokerCard, String) {
-  PokerCard card1(Suit::kClub, Rank::kAce);
+  using enum Rank;
+  using enum Suit;
+  const PokerCard card1(kClub, kAce);
   EXPECT_EQ(card1.string(), "Ace of Clubs");
 
-  auto card2 = std::shared_ptr<Card>(new PokerCard(Suit::kSpade, Rank::kKing));
+  auto card2 = std::shared_ptr<Card>(new PokerCard(kSpade, kKing));
   EXPECT_EQ(card2->string(), "King of Spades");
 
   std::ostringstream oss;
@@ -20,10 +23,12 @@ TEST(PokerCard, String) {
 }
 
 TEST(UnoCard, String) {
-  UNOCard card1(Color::kBlue, Number::kZero);
+  using enum Color;
+  using enum Number;
+  const UNOCard card1(kBlue, kZero);
   EXPECT_EQ(card1.string(), "Blue Zero");
 
-  auto card2 = std::shared_ptr<Card>(new UNOCard(Color::kRed, Number::kFour));
+  auto card2 = std::shared_ptr<Card>(new UNOCard(kRed, kFour));
   EXPECT_EQ(card2->string(), "Red Four");
 
   std::ostringstream oss;
@@ -36,10 +41,12 @@ TEST(UnoCard, String) {
 }
 
 TEST(PokerCard, Comparison) {
-  PokerCard card1(Suit::kClub, Rank::kAce);
-  PokerCard card2(Suit::kClub, Rank::kTwo);
+  using enum Rank;
+  using enum Suit;
+  const PokerCard card1(kClub, kAce);
+  const PokerCard card2(kClub, kTwo);
   EXPECT_GT(card1, card2);
 
-  PokerCard card3(Suit::kDiamond, Rank::kAce);
+  const PokerCard card3(kDiamond, kAce);
   EXPECT_LT(card1, card3);
 }
