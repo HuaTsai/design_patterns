@@ -42,7 +42,8 @@ void UNOCardGame::PlayPhase() {
       players()[i]->Draw(deck());
     }
 
-    if (std::cmp_equal(++i ,players().size())) {
+    ++i;
+    if (std::cmp_equal(i ,players().size())) {
       i = 0;
       std::cout << "\n";
     }
