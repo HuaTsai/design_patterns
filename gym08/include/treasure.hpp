@@ -6,7 +6,6 @@
 #include <memory>
 #include <random>
 
-// clang-format off
 #define DECLARE_TREASURE_CLASS(ClassName, Probability)           \
   class ClassName : public Treasure {                            \
    public:                                                       \
@@ -19,7 +18,6 @@
     ClassName::kProbability,                                                   \
         [](int row, int col) { return std::make_shared<ClassName>(row, col); } \
   }
-// clang-format on
 
 class Treasure : public MapObject {
  public:

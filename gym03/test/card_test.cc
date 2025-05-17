@@ -3,7 +3,6 @@
 #include "poker_card.hpp"
 #include "uno_card.hpp"
 
-
 TEST(PokerCard, String) {
   using enum Rank;
   using enum Suit;

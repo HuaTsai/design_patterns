@@ -14,6 +14,7 @@ if(CLANG_FORMAT)
   add_custom_target(format
     COMMAND ${CLANG_FORMAT} -i ${SOURCE_FILES}
     COMMENT "Formatting source files with clang-format"
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
 else()
   message(WARNING "clang-format not found, 'format' target will not be available.")
