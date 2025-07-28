@@ -1,0 +1,21 @@
+#pragma once
+
+#include <fsm/state.hpp>
+#include <unordered_map>
+
+class ThanksForJoiningState : public State {
+ public:
+  using State::State;
+
+  void OnEnter() override;
+  Event OnDo(Event event) override;
+  void OnExit() override;
+
+  void set_scores(std::shared_ptr<std::unordered_map<std::string, int>> scores) {
+    scores_ = scores;
+  }
+
+ private:
+  std::shared_ptr<std::unordered_map<std::string, int>> scores_;
+  int elapsed_time_;
+};

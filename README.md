@@ -23,6 +23,7 @@ This project demonstrates various design patterns in C++ through a series of exa
 12. **Gym12**: Showcases the use of the Proxy pattern in a database system.
 13. **Gym13**: Demonstrates the use of the Composite pattern in a logger system.
 14. **Gym14**: Implements the Decorator pattern in an HTTP client.
+15. **Gym15**: Demonstrates the use of Finite State Machine in a community system.
 
 ## Build
 
@@ -30,10 +31,12 @@ This project demonstrates various design patterns in C++ through a series of exa
   - `cmake >= 3.10`
   - `g++-14`
   - `clang-format`
+    - Local 18
+    - Github CI 19
 - Build Command
 
   ```bash
   cmake -B build
-  cmake --build build
+  cmake --build build -j$(nproc)
   cmake --build build --target format  # format code
   ```
