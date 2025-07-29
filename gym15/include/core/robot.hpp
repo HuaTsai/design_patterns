@@ -14,7 +14,6 @@ class Robot : public User {
   void Trigger(Event event);
 
   void set_fsm(std::shared_ptr<FiniteStateMachine> fsm) { fsm_ = fsm; }
-  std::shared_ptr<WaterballCommunity> community() const { return User::community(); }
 
  private:
   std::shared_ptr<FiniteStateMachine> fsm_{nullptr};

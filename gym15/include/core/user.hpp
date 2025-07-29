@@ -1,5 +1,6 @@
 #pragma once
 
+#include <core/string_hash.hpp>
 #include <core/tag.hpp>
 #include <memory>
 #include <string>
@@ -33,8 +34,7 @@ class User : public std::enable_shared_from_this<User> {
   void SendMessage(const std::string &content, const std::vector<Tag> &tags);
   void NewPost(const std::string &id, const std::string &title, const std::string &content,
                const std::vector<Tag> &tags);
-  void Comment(const std::string &post_id, const std::string &content,
-               const std::vector<Tag> &tags);
+  void Comment(std::string_view post_id, const std::string &content, const std::vector<Tag> &tags);
   void GoBroadcasting();
   void Speak(const std::string &content);
   void StopBroadcasting();
@@ -51,6 +51,6 @@ class User : public std::enable_shared_from_this<User> {
   std::weak_ptr<WaterballCommunity> community_;
   // clang-format off
   static std::unordered_map<std::string, std::shared_ptr<User>,
-                            std::hash<std::string>, std::equal_to<>> user_map_;
+                            StringHash, std::equal_to<>> user_map_;
   // clang-format on
 };

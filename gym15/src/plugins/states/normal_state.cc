@@ -34,4 +34,5 @@ void NormalState::OnEnter() {
 
 Event NormalState::OnDo(Event event) { return event; }
 
-void NormalState::OnExit() { /* nop */ }
+void NormalState::OnExit() { /* nop */
+}

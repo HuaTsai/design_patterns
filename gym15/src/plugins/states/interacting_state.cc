@@ -27,4 +27,5 @@ Event InteractingState::OnDo(Event event) {
   return event;
 }
 
-void InteractingState::OnExit() { /* nop */ }
+void InteractingState::OnExit() { /* nop */
+}

@@ -65,7 +65,7 @@ void User::NewPost(const std::string &id, const std::string &title, const std::s
   fourm->AddPost(id, shared_from_this(), title, content, tags);
 }
 
-void User::Comment(const std::string &post_id, const std::string &content,
+void User::Comment(std::string_view post_id, const std::string &content,
                    const std::vector<Tag> &tags) {
   auto posts = community_.lock()->fourm()->posts();
   for (const auto &post : posts) {
@@ -100,5 +100,4 @@ void User::StopBroadcasting() {
   broadcast->StopBroadcasting(shared_from_this());
 }
 
-std::unordered_map<std::string, std::shared_ptr<User>, std::hash<std::string>, std::equal_to<>>
-    User::user_map_;
+std::unordered_map<std::string, std::shared_ptr<User>, StringHash, std::equal_to<>> User::user_map_;

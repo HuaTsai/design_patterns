@@ -61,4 +61,5 @@ Event QuestioningState::OnDo(Event event) {
   return event;
 }
 
-void QuestioningState::OnExit() { /* nop */ }
+void QuestioningState::OnExit() { /* nop */
+}

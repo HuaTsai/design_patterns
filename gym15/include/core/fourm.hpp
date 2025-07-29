@@ -1,5 +1,6 @@
 #pragma once
 
+#include <core/string_hash.hpp>
 #include <core/tag.hpp>
 #include <memory>
 #include <string>
@@ -55,5 +56,5 @@ class Fourm {
  private:
   std::weak_ptr<WaterballCommunity> community_;
   std::vector<std::shared_ptr<Post>> posts_;
-  std::unordered_set<std::string, std::hash<std::string>, std::equal_to<>> post_ids_;
+  std::unordered_set<std::string, StringHash, std::equal_to<>> post_ids_;
 };

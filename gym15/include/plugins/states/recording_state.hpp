@@ -10,7 +10,7 @@ class RecordingState : public State {
   Event OnDo(Event event) override;
   void OnExit() override;
 
-  void set_recorder_id(const std::string &recorder_id) { recorder_id_ = recorder_id; }
+  void set_recorder_id(std::string_view recorder_id) { recorder_id_ = recorder_id; }
 
  private:
   std::string recording_data_;
