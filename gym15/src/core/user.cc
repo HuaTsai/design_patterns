@@ -1,15 +1,26 @@
 #include <core/user.hpp>
 #include <core/waterball_community.hpp>
 
+User::User(const std::string &id, Status status, Permission permission,
+           std::shared_ptr<WaterballCommunity> community)
+    : id_(id), status_(status), permission_(permission), community_(community) {
+  if (id.empty() || id.size() > 20) {
+    throw std::invalid_argument("Name must be between 1 and 20 characters.");
+  }
+}
+
 std::shared_ptr<User> User::CreateUser(const std::string &id, Status status, Permission permission,
                                        std::shared_ptr<WaterballCommunity> community) {
+  auto user = std::make_shared<User>(id, status, permission, community);
+  RegisterUser(id, user);
+  return user;
+}
+
+void User::RegisterUser(const std::string &id, std::shared_ptr<User> user) {
   if (user_map_.contains(id)) {
     throw std::invalid_argument("User already exists.");
   }
-
-  auto user = std::shared_ptr<User>(new User(id, status, permission, community));
   user_map_[id] = user;
-  return user;
 }
 
 std::shared_ptr<User> User::GetUser(const std::string &id) {
@@ -89,12 +100,5 @@ void User::StopBroadcasting() {
   broadcast->StopBroadcasting(shared_from_this());
 }
 
-User::User(const std::string &id, Status status, Permission permission,
-           std::shared_ptr<WaterballCommunity> community)
-    : id_(id), status_(status), permission_(permission), community_(community) {
-  if (id.empty() || id.size() > 20) {
-    throw std::invalid_argument("Name must be between 1 and 20 characters.");
-  }
-}
-
-std::unordered_map<std::string, std::shared_ptr<User>> User::user_map_;
+std::unordered_map<std::string, std::shared_ptr<User>, std::hash<std::string>, std::equal_to<>>
+    User::user_map_;

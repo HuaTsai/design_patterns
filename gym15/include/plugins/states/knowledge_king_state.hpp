@@ -6,7 +6,7 @@
 class KnowledgeKingState : public State {
  public:
   KnowledgeKingState() = default;
-  KnowledgeKingState(std::shared_ptr<FiniteStateMachine> child_fsm);
+  explicit KnowledgeKingState(std::shared_ptr<FiniteStateMachine> child_fsm);
 
   void OnEnter() override;
   Event OnDo(Event event) override;

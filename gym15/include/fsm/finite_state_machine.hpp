@@ -24,8 +24,8 @@ class FiniteStateMachine {
 
  private:
   std::weak_ptr<Robot> robot_;
-  std::shared_ptr<State> state_;
+  std::shared_ptr<State> state_{nullptr};
   std::vector<std::shared_ptr<State>> states_;
   std::vector<Transition> transitions_;
-  bool is_final_state_;
+  bool is_final_state_{false};
 };

@@ -5,7 +5,7 @@
 
 class QuotaCountGuard : public Guard {
  public:
-  explicit QuotaCountGuard(int threshold, std::function<bool(int, int)> compare);
+  explicit QuotaCountGuard(int threshold, const std::function<bool(int, int)> &compare);
   bool operator()() const override;
 
  private:

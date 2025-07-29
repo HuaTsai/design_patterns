@@ -15,9 +15,9 @@ enum class TimeUnit {
 
 class WaterballCommunity : public std::enable_shared_from_this<WaterballCommunity> {
  public:
-  WaterballCommunity();
+  WaterballCommunity() = default;
 
-  std::shared_ptr<User> AddUser(std::string id, Permission permission);
+  std::shared_ptr<User> AddUser(const std::string &id, Permission permission);
   void AddRobot(std::shared_ptr<Robot> robot);
   void Start(int epoch_time, int quota);
   void Wait(int amount, TimeUnit unit);
@@ -33,9 +33,9 @@ class WaterballCommunity : public std::enable_shared_from_this<WaterballCommunit
   std::vector<std::shared_ptr<Robot>> robots() const { return robots_; }
 
  private:
-  int quota_;
-  int current_time_;
-  int last_elapsed_time_;
+  int quota_{0};
+  int current_time_{0};
+  int last_elapsed_time_{0};
   std::vector<std::shared_ptr<User>> users_;
   std::shared_ptr<ChatRoom> chat_room_;
   std::shared_ptr<Fourm> fourm_;

@@ -4,7 +4,7 @@
 
 class SendMessageAction : public Action {
  public:
-  SendMessageAction(const std::string &message);
+  explicit SendMessageAction(const std::string &message);
   void operator()() const override;
 
  private:

@@ -6,12 +6,12 @@
 
 class WaterballCommunityFacade {
  public:
-  WaterballCommunityFacade();
+  WaterballCommunityFacade() = default;
 
   std::shared_ptr<Robot> CreateRobot(const std::string &id);
   static void AssociateRobotWithFSM(const std::string &id, std::shared_ptr<FiniteStateMachine> fsm);
   void Input(const std::string &action, const nlohmann::json &input = nlohmann::json::object());
 
  private:
-  std::shared_ptr<WaterballCommunity> community_;
+  std::shared_ptr<WaterballCommunity> community_{std::make_shared<WaterballCommunity>()};
 };

@@ -14,6 +14,8 @@ class WaterballCommunity;
 
 class User : public std::enable_shared_from_this<User> {
  public:
+  explicit User(const std::string &id, Status status, Permission permission,
+                std::shared_ptr<WaterballCommunity> community);
   virtual ~User() = default;
   User(const User &) = delete;
   User &operator=(const User &) = delete;
@@ -23,6 +25,7 @@ class User : public std::enable_shared_from_this<User> {
   static std::shared_ptr<User> CreateUser(const std::string &id, Status status,
                                           Permission permission,
                                           std::shared_ptr<WaterballCommunity> community);
+  static void RegisterUser(const std::string &id, std::shared_ptr<User> user);
   static std::shared_ptr<User> GetUser(const std::string &id);
 
   void Login();
@@ -39,14 +42,15 @@ class User : public std::enable_shared_from_this<User> {
   std::string id() const { return id_; }
   Status status() const { return status_; }
   Permission permission() const { return permission_; }
+  std::shared_ptr<WaterballCommunity> community() const { return community_.lock(); }
 
- protected:
-  explicit User(const std::string &id, Status status, Permission permission,
-                std::shared_ptr<WaterballCommunity> community);
-
+ private:
   std::string id_;
   Status status_;
   Permission permission_;
   std::weak_ptr<WaterballCommunity> community_;
-  static std::unordered_map<std::string, std::shared_ptr<User>> user_map_;
+  // clang-format off
+  static std::unordered_map<std::string, std::shared_ptr<User>,
+                            std::hash<std::string>, std::equal_to<>> user_map_;
+  // clang-format on
 };

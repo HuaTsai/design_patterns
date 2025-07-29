@@ -1,7 +1,8 @@
 #include <core/waterball_community.hpp>
 #include <plugins/guards/online_users_count_guard.hpp>
 
-OnlineUsersCountGuard::OnlineUsersCountGuard(int threshold, std::function<bool(int, int)> compare)
+OnlineUsersCountGuard::OnlineUsersCountGuard(int threshold,
+                                             const std::function<bool(int, int)> &compare)
     : threshold_(threshold), compare_(compare) {}
 
 bool OnlineUsersCountGuard::operator()() const {

@@ -1,7 +1,7 @@
 #include <core/waterball_community.hpp>
 #include <plugins/guards/quota_count_guard.hpp>
 
-QuotaCountGuard::QuotaCountGuard(int threshold, std::function<bool(int, int)> compare)
+QuotaCountGuard::QuotaCountGuard(int threshold, const std::function<bool(int, int)> &compare)
     : threshold_(threshold), compare_(compare) {}
 
 bool QuotaCountGuard::operator()() const {

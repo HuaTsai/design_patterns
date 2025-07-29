@@ -8,15 +8,14 @@ class WaterballCommunity;
 
 class Robot : public User {
  public:
+  Robot(const std::string &id, std::shared_ptr<WaterballCommunity> community);
   static std::shared_ptr<Robot> CreateRobot(const std::string &id,
                                             std::shared_ptr<WaterballCommunity> community);
   void Trigger(Event event);
 
   void set_fsm(std::shared_ptr<FiniteStateMachine> fsm) { fsm_ = fsm; }
-  std::shared_ptr<WaterballCommunity> community() const { return community_.lock(); }
+  std::shared_ptr<WaterballCommunity> community() const { return User::community(); }
 
  private:
-  Robot(const std::string &id, std::shared_ptr<WaterballCommunity> community);
-  std::shared_ptr<FiniteStateMachine> fsm_;
-  std::weak_ptr<WaterballCommunity> community_;
+  std::shared_ptr<FiniteStateMachine> fsm_{nullptr};
 };

@@ -5,7 +5,7 @@
 
 class OnlineUsersCountGuard : public Guard {
  public:
-  explicit OnlineUsersCountGuard(int threshold, std::function<bool(int, int)> compare);
+  explicit OnlineUsersCountGuard(int threshold, const std::function<bool(int, int)> &compare);
   bool operator()() const override;
 
  private:

@@ -29,4 +29,4 @@ void KnowledgeKingState::OnEnter() {
 
 Event KnowledgeKingState::OnDo(Event event) { return event; }
 
-void KnowledgeKingState::OnExit() {}
+void KnowledgeKingState::OnExit() { /* nop */ }

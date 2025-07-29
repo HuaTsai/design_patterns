@@ -8,7 +8,7 @@ class FiniteStateMachine;
 class State {
  public:
   State() = default;
-  State(std::shared_ptr<FiniteStateMachine> child_fsm);
+  explicit State(std::shared_ptr<FiniteStateMachine> child_fsm);
   virtual ~State() = default;
   State(const State &) = delete;
   State &operator=(const State &) = delete;

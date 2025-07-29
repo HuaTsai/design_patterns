@@ -1,15 +1,15 @@
+#include <chrono>
+#include <sstream>
 #include <waterball_community_facade.hpp>
 
 namespace {
 int ParseTimeString(const std::string &time_str) {
-  std::tm tm = {};
   std::istringstream ss(time_str);
-  ss >> std::get_time(&tm, "%Y-%m-%d %H:%M:%S");
-  return static_cast<int>(std::mktime(&tm));
+  std::chrono::sys_seconds time_point;
+  std::chrono::from_stream(ss, "%Y-%m-%d %H:%M:%S", time_point);
+  return static_cast<int>(time_point.time_since_epoch().count());
 }
 }  // namespace
-
-WaterballCommunityFacade::WaterballCommunityFacade() : community_(new WaterballCommunity()) {}
 
 std::shared_ptr<Robot> WaterballCommunityFacade::CreateRobot(const std::string &id) {
   auto robot = Robot::CreateRobot(id, community_);
@@ -65,12 +65,13 @@ void WaterballCommunityFacade::Input(const std::string &action, const nlohmann::
     int amount = 0;
     std::string unit;
     if (iss >> amount >> unit) {
+      using enum TimeUnit;
       if (unit == "second" || unit == "seconds") {
-        community_->Wait(amount, TimeUnit::kSeconds);
+        community_->Wait(amount, kSeconds);
       } else if (unit == "minute" || unit == "minutes") {
-        community_->Wait(amount, TimeUnit::kMinutes);
+        community_->Wait(amount, kMinutes);
       } else if (unit == "hour" || unit == "hours") {
-        community_->Wait(amount, TimeUnit::kHours);
+        community_->Wait(amount, kHours);
       }
     }
   }

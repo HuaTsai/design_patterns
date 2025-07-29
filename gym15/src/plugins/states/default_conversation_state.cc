@@ -23,4 +23,4 @@ Event DefaultConversationState::OnDo(Event event) {
   return event;
 }
 
-void DefaultConversationState::OnExit() {}
+void DefaultConversationState::OnExit() { /* nop */ }

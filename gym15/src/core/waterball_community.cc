@@ -1,9 +1,7 @@
 #include <core/waterball_community.hpp>
 #include <print>
 
-WaterballCommunity::WaterballCommunity() : quota_(0), current_time_(0), last_elapsed_time_(0) {}
-
-std::shared_ptr<User> WaterballCommunity::AddUser(std::string id, Permission permission) {
+std::shared_ptr<User> WaterballCommunity::AddUser(const std::string &id, Permission permission) {
   auto user = User::CreateUser(id, Status::kOffline, permission, shared_from_this());
   users_.emplace_back(user);
   return user;
@@ -26,15 +24,16 @@ void WaterballCommunity::Start(int epoch_time, int quota) {
 }
 
 void WaterballCommunity::Wait(int amount, TimeUnit unit) {
-  if (unit == TimeUnit::kSeconds) {
+  using enum TimeUnit;
+  if (unit == kSeconds) {
     std::print("🕑 {} seconds elapsed...\n", amount);
     last_elapsed_time_ = amount;
     current_time_ += amount;
-  } else if (unit == TimeUnit::kMinutes) {
+  } else if (unit == kMinutes) {
     std::print("🕑 {} minutes elapsed...\n", amount);
     last_elapsed_time_ = amount * 60;
     current_time_ += last_elapsed_time_;
-  } else if (unit == TimeUnit::kHours) {
+  } else if (unit == kHours) {
     std::print("🕑 {} hours elapsed...\n", amount);
     last_elapsed_time_ = amount * 3600;
     current_time_ += last_elapsed_time_;

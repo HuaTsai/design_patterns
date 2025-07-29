@@ -4,7 +4,7 @@
 
 class ConsumeConstantQuotaAction : public Action {
  public:
-  ConsumeConstantQuotaAction(int quota);
+  explicit ConsumeConstantQuotaAction(int quota);
   void operator()() const override;
 
  private:
