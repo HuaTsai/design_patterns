@@ -43,6 +43,4 @@ Event ThanksForJoiningState::OnDo(Event event) {
   return event;
 }
 
-void ThanksForJoiningState::OnExit() {
-  /* nop */
-}
+void ThanksForJoiningState::OnExit() { /* nop */ }
