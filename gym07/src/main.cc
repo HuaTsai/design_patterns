@@ -2,6 +2,7 @@
 #include <iostream>
 #include <print>
 #include <sstream>
+#include <utility>
 
 #include "connect_telecom.hpp"
 #include "disconnect_telecom.hpp"
@@ -9,6 +10,7 @@
 #include "move_tank_backward.hpp"
 #include "move_tank_forward.hpp"
 
+namespace {
 struct Cmd {
   std::string name;
   std::shared_ptr<Command> cmd;
@@ -30,7 +32,7 @@ void BindSingleCommandInstruction(const std::vector<Cmd> &cmds,
 
   int cmd = 0;
   std::cin >> cmd;
-  if (cmd < 0 || cmd >= static_cast<int>(cmds.size())) {
+  if (cmd < 0 || std::cmp_greater_equal(cmd, cmds.size())) {
     throw std::invalid_argument("不合法的指令");
   }
 
@@ -57,10 +59,11 @@ void BindMacroCommandInstruction(const std::vector<Cmd> &cmds, std::shared_ptr<K
   std::vector<std::shared_ptr<Command>> macro;
   int cmd = 0;
   while (ss >> cmd) {
-    macro.push_back(cmds[cmd].cmd);
+    macro.push_back(cmds.at(cmd).cmd);
   }
   keyboard->BindOperation(c[0], macro);
 }
+}  // namespace
 
 int main() {
   auto tank = std::make_shared<Tank>();
@@ -73,11 +76,11 @@ int main() {
   auto keyboard = std::make_shared<Keyboard>();
 
   std::vector<Cmd> cmds;
-  cmds.push_back(Cmd{cmd_mtf->name(), cmd_mtf});
-  cmds.push_back(Cmd{cmd_mtb->name(), cmd_mtb});
-  cmds.push_back(Cmd{cmd_ct->name(), cmd_ct});
-  cmds.push_back(Cmd{cmd_dt->name(), cmd_dt});
-  cmds.push_back(Cmd{"ResetMainControlKeyboard", cmd_reset});
+  cmds.push_back(Cmd{.name = cmd_mtf->name(), .cmd = cmd_mtf});
+  cmds.push_back(Cmd{.name = cmd_mtb->name(), .cmd = cmd_mtb});
+  cmds.push_back(Cmd{.name = cmd_ct->name(), .cmd = cmd_ct});
+  cmds.push_back(Cmd{.name = cmd_dt->name(), .cmd = cmd_dt});
+  cmds.push_back(Cmd{.name = "ResetMainControlKeyboard", .cmd = cmd_reset});
 
   while (true) {
     std::string cmd;

@@ -1,5 +1,6 @@
 #include <ai.hpp>
 #include <print>
+#include <utility>
 
 AI::AI(std::shared_ptr<Troop> troop, std::string name, int hp, int mp, int str)
     : Role(troop, name, hp, mp, str), seed_(0) {}
@@ -12,7 +13,7 @@ std::shared_ptr<Skill> AI::S1Input() {
   for (size_t i = 0; i < allskills.size(); i++) {
     std::print(" ({}) {}", i + 1, allskills[i]->name());
   }
-  std::println();
+  std::print("\n");
 
   int input = seed_++ % options;
   while (true) {
@@ -20,15 +21,14 @@ std::shared_ptr<Skill> AI::S1Input() {
       return nullptr;
     }
 
-    const auto &skill = allskills[input - 1];
+    const auto &skill = allskills.at(input - 1);
     if (skill->mp_cost() > mp()) {
-      std::println("你缺乏 MP，不能進行此行動。");
-
+      std::print("你缺乏 MP，不能進行此行動。\n");
       std::print("選擇行動：(0) 普通攻擊");
       for (size_t i = 0; i < allskills.size(); i++) {
         std::print(" ({}) {}", i + 1, allskills[i]->name());
       }
-      std::println();
+      std::print("\n");
 
       input = seed_++ % options;
       continue;
@@ -47,7 +47,7 @@ std::shared_ptr<Role> AI::S2Input(const std::vector<std::shared_ptr<Role>> &cand
 
 std::vector<std::shared_ptr<Role>> AI::S2InputMultiple(
     const std::vector<std::shared_ptr<Role>> &candidates, int slots) {
-  if (static_cast<int>(candidates.size()) <= slots) {
+  if (std::cmp_less_equal(candidates.size(), slots)) {
     return candidates;
   }
   std::vector<std::shared_ptr<Role>> ret;

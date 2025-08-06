@@ -10,21 +10,21 @@ int main() {
   for (const auto &f : fs1) {
     std::print("{} ", f);
   }
-  std::println();
+  std::print("\n");
 
   auto fs2 = adapter->GetMutualFriends("A", "C");
   std::print("Mutual friends of A and C: ");
   for (const auto &f : fs2) {
     std::print("{} ", f);
   }
-  std::println();
+  std::print("\n");
 
   auto fs3 = adapter->GetMutualFriends("C", "D");
   std::print("Mutual friends of C and D: ");
   for (const auto &f : fs3) {
     std::print("{} ", f);
   }
-  std::println();
+  std::print("\n");
 
   auto con1 = graph->HasConnection("A", "B");
   std::print("A and B are connected: {}\n", con1);

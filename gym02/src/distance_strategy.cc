@@ -2,7 +2,7 @@
 
 namespace {
 int DistanceSquared(const Coord &a, const Coord &b) {
-  return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
+  return ((a.x - b.x) * (a.x - b.x)) + ((a.y - b.y) * (a.y - b.y));
 }
 }  // namespace
 

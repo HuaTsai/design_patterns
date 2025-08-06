@@ -1,5 +1,6 @@
 #include <core/waterball_community.hpp>
 #include <plugins/states/questioning_state.hpp>
+#include <utility>
 
 namespace {
 const std::array<std::string, 3> questions = {
@@ -47,7 +48,8 @@ Event QuestioningState::OnDo(Event event) {
       auto user_id = message.user.lock()->id();
       parent_fsm()->robot()->SendMessage("Congrats! you got the answer!", {Tag(user_id)});
       (*scores_)[user_id] += 1;
-      if (++question_id_ == static_cast<int>(questions.size())) {
+      ++question_id_;
+      if (std::cmp_equal(question_id_, questions.size())) {
         return Event::kStateEnd;
       }
       parent_fsm()->robot()->SendMessage(questions.at(question_id_), {});

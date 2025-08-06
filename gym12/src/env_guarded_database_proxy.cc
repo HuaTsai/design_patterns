@@ -15,7 +15,7 @@ std::shared_ptr<Employee> EnvGuardedDatabaseProxy::GetEmployeeById(int id) {
       throw std::runtime_error("Unauthorized access");
     }
     access_granted = true;
-    std::println("Access granted");
+    std::print("Access granted\n");
   }
   return database_->GetEmployeeById(id);
 }
