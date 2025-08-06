@@ -2,8 +2,8 @@
 
 ConnectTelecom::ConnectTelecom(std::shared_ptr<Telecom> telecom) : telecom_(telecom) {}
 
-void ConnectTelecom::Execute() { Telecom::Connect(); }
+void ConnectTelecom::Execute() { telecom_->Connect(); }  // NOLINT(readability-static-accessed-through-instance)
 
-void ConnectTelecom::Undo() { Telecom::Disconnect(); }
+void ConnectTelecom::Undo() { telecom_->Disconnect(); }  // NOLINT(readability-static-accessed-through-instance)
 
 std::string ConnectTelecom::name() const { return "ConnectTelecom"; }
