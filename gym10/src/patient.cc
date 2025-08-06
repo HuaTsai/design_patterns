@@ -3,12 +3,7 @@
 
 Patient::Patient(const std::string &id, const std::string &name, Gender gender, int age,
                  double height, double weight)
-    : id_(id),
-      name_(name),
-      gender_(gender),
-      age_(age),
-      height_(height),
-      weight_(weight) {
+    : id_(id), name_(name), gender_(gender), age_(age), height_(height), weight_(weight) {
   if (id_.size() != 10 || !std::isupper(id_[0])) {  // NOLINT
     throw std::invalid_argument("Invalid patient ID");
   }

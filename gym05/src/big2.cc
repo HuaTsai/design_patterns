@@ -1,6 +1,7 @@
 #include "big2.hpp"
 
 #include <iostream>
+#include <print>
 
 #include "full_house_card_pattern.hpp"
 #include "human_player.hpp"
@@ -59,7 +60,7 @@ void Big2::RoundStart() {
   static int round = 1;
   static int id = -1;
 
-  std::cout << "新的回合開始了。\n";
+  std::print("新的回合開始了。\n");
 
   if (round == 1) {
     for (int i = 0; i < 4; ++i) {
@@ -107,6 +108,4 @@ void Big2::RoundStart() {
   ++round;
 }
 
-void Big2::ShowWinner() {
-  std::cout << std::format("遊戲結束，遊戲的勝利者為 {}\n", winner_->name());
-}
+void Big2::ShowWinner() { std::print("遊戲結束，遊戲的勝利者為 {}\n", winner_->name()); }

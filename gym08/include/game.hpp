@@ -29,7 +29,7 @@ class Game {
   void DrawMap() const;
   void ShowStatus() const;
   [[nodiscard]] std::pair<int, int> GetRandomEmptyPosition() const;
-  
+
   Options GetValidCommand();
   void HandleAttackCommand(int row, int col);
   void HandleEruptingAttack();
@@ -37,7 +37,7 @@ class Game {
   bool IsObstacleAt(int row, int col);
   void AttackMonsterAt(int row, int col);
   void AttackInDirection(int start_row, int start_col, int delta_row, int delta_col);
-  void ProcessMoveCommand(Options cmd, int& row, int& col);
+  void ProcessMoveCommand(Options cmd, int &row, int &col);
   void HandleTreasureInteraction(int row, int col);
   void ExecuteMovement(Options cmd);
 

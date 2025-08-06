@@ -1,5 +1,6 @@
 #include <format>
 #include <iostream>
+#include <print>
 #include <sstream>
 
 #include "connect_telecom.hpp"
@@ -15,16 +16,16 @@ struct Cmd {
 
 void BindSingleCommandInstruction(const std::vector<Cmd> &cmds,
                                   std::shared_ptr<Keyboard> keyboard) {
-  std::cout << "Key: ";
+  std::print("Key: ");
   std::string c;
   std::cin >> c;
   if (c.size() != 1 || (std::isalpha(c[0]) == 0)) {
     throw std::invalid_argument("不合法的指令");
   }
 
-  std::cout << std::format("要將哪一道指令設置到快捷鍵 {} 上:\n", c[0]);
+  std::print("要將哪一道指令設置到快捷鍵 {} 上:\n", c[0]);
   for (size_t i = 0; i < cmds.size(); ++i) {
-    std::cout << std::format("({}) {}\n", i, cmds[i].name);
+    std::print("({}) {}\n", i, cmds[i].name);
   }
 
   int cmd = 0;
@@ -37,7 +38,7 @@ void BindSingleCommandInstruction(const std::vector<Cmd> &cmds,
 }
 
 void BindMacroCommandInstruction(const std::vector<Cmd> &cmds, std::shared_ptr<Keyboard> keyboard) {
-  std::cout << "Key: ";
+  std::print("Key: ");
   std::string c;
   std::cin >> c;
   if (c.size() != 1 || (std::isalpha(c[0]) == 0)) {
@@ -45,10 +46,9 @@ void BindMacroCommandInstruction(const std::vector<Cmd> &cmds, std::shared_ptr<K
   }
   std::cin.ignore();  // skip the newline character
 
-  std::cout << std::format("要將哪些指令設置成快捷鍵 {} 的巨集（輸入多個數字，以空白隔開）:\n",
-                           c[0]);
+  std::print("要將哪些指令設置成快捷鍵 {} 的巨集（輸入多個數字，以空白隔開）:\n", c[0]);
   for (size_t i = 0; i < cmds.size(); ++i) {
-    std::cout << std::format("({}) {}\n", i, cmds[i].name);
+    std::print("({}) {}\n", i, cmds[i].name);
   }
 
   std::string cmdstr;
@@ -81,10 +81,10 @@ int main() {
 
   while (true) {
     std::string cmd;
-    std::cout << "(1) 快捷鍵設置 (2) Undo (3) Redo (字母) 按下按鍵: ";
+    std::print("(1) 快捷鍵設置 (2) Undo (3) Redo (字母) 按下按鍵: ");
     std::cin >> cmd;
     if (std::cin.eof()) {
-      std::cout << "Bye\n";
+      std::print("Bye\n");
       break;
     }
     if (cmd.size() != 1) {
@@ -92,7 +92,7 @@ int main() {
     }
     if (cmd[0] == '1') {
       char set_macro = 0;
-      std::cout << "設置巨集指令 (y/n): ";
+      std::print("設置巨集指令 (y/n): ");
       std::cin >> set_macro;
       if (std::tolower(set_macro) == 'y') {
         BindMacroCommandInstruction(cmds, keyboard);

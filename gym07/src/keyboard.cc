@@ -1,6 +1,7 @@
 #include "keyboard.hpp"
 
 #include <iostream>
+#include <print>
 #include <ranges>
 
 void Keyboard::Press(char key) {
@@ -71,14 +72,14 @@ void Keyboard::Redo() {
 
 void Keyboard::PrintKeymap() const {
   for (const auto &[key, cmds] : keymap_) {
-    std::cout << key << ": ";
+    std::print("{}: ", key);
     for (const auto &cmd : cmds) {
       if (cmd) {
-        std::cout << cmd->name() << " ";
+        std::print("{} ", cmd->name());
       } else {
-        std::cout << "ResetMainControlKeyboard ";
+        std::print("ResetMainControlKeyboard ");
       }
     }
-    std::cout << "\n";
+    std::print("\n");
   }
 }

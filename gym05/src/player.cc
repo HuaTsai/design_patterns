@@ -1,7 +1,7 @@
 #include "player.hpp"
 
 #include <algorithm>
-#include <iostream>
+#include <print>
 
 Player::Player(std::string name, std::shared_ptr<CardPatternRecognizer> recognizer)
     : name_(name), recognizer_(recognizer) {}
@@ -23,7 +23,8 @@ void Player::PrintHandCards() const {
   std::string nums;
   for (size_t i = 0; i < hand_cards_.size(); ++i) {
     const std::string num = std::to_string(i);
-    const int pad = static_cast<int>(hand_cards_[i]->string().size()) - static_cast<int>(num.size());
+    const int pad =
+        static_cast<int>(hand_cards_[i]->string().size()) - static_cast<int>(num.size());
     if (i + 1 != hand_cards_.size()) {
       nums += num + std::string(pad + 1, ' ');
     } else {
@@ -40,7 +41,7 @@ void Player::PrintHandCards() const {
     }
   }
 
-  std::cout << nums << cards;
+  std::print("{}{}", nums, cards);
 }
 
 std::string Player::name() const { return name_; }

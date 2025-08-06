@@ -1,5 +1,5 @@
 #include <game.hpp>
-#include <iostream>
+#include <print>
 #include <random>
 
 void Game::Start() {
@@ -107,7 +107,7 @@ void Game::CharacterAction() {
   }
 
   ProcessMoveCommand(cmd, row, col);
-  
+
   if (auto ptr = map_objects_[row][col].lock(); ptr) {
     HandleTreasureInteraction(row, col);
     return;
@@ -120,7 +120,7 @@ Options Game::GetValidCommand() {
   auto cmd = character_->Action();
   while (true) {
     if (cmd == Options::kInvalid) {
-      std::cout << "\nInvalid action\n";
+      std::print("\nInvalid action\n");
       cmd = character_->Action();
       continue;
     }
@@ -129,7 +129,7 @@ Options Game::GetValidCommand() {
         (cmd == Options::kMoveDown && character_->row() == kMapSize - 1) ||
         (cmd == Options::kMoveLeft && character_->col() == 0) ||
         (cmd == Options::kMoveRight && character_->col() == kMapSize - 1)) {
-      std::cout << "\nBump to the wall!\n";
+      std::print("\nBump to the wall!\n");
       cmd = character_->Action();
       continue;
     }
@@ -175,14 +175,14 @@ void Game::AttackMonsterAt(int row, int col) {
 void Game::AttackInDirection(int start_row, int start_col, int delta_row, int delta_col) {
   int row = start_row;
   int col = start_col;
-  
+
   while (row >= 0 && row < kMapSize && col >= 0 && col < kMapSize) {
     if (IsObstacleAt(row, col)) {
       break;
     }
-    
+
     AttackMonsterAt(row, col);
-    
+
     row += delta_row;
     col += delta_col;
   }
@@ -205,7 +205,7 @@ void Game::HandleDirectionalAttack(int row, int col, Direction dir) {
   }
 }
 
-void Game::ProcessMoveCommand(Options cmd, int& row, int& col) {
+void Game::ProcessMoveCommand(Options cmd, int &row, int &col) {
   switch (cmd) {
     case Options::kMoveUp:
       --row;
@@ -241,7 +241,7 @@ void Game::ExecuteMovement(Options cmd) {
   if (cmd == Options::kAttack) {
     return;
   }
-  
+
   map_objects_[character_->row()][character_->col()].reset();
   switch (cmd) {
     case Options::kMoveUp:
@@ -319,7 +319,7 @@ void Game::MonsterAction(const std::shared_ptr<Monster> &monster) {
 }
 
 void Game::DrawMap() const {
-  std::cout << "\033[2J\033[1;1H";  // magic code to clear screen
+  std::print("\033[2J\033[1;1H");  // magic code to clear screen
   std::string top("╔");
   for (int i = 0; i < kMapSize * 2 + 1; ++i) {
     top += "═";
@@ -332,19 +332,19 @@ void Game::DrawMap() const {
   }
   bottom += "╝";
 
-  std::cout << top << "\n";
+  std::print("{}\n", top);
   for (int i = 0; i < kMapSize; ++i) {
-    std::cout << "║ ";
+    std::print("║ ");
     for (int j = 0; j < kMapSize; ++j) {
       if (auto ptr = map_objects_[i][j].lock(); ptr) {
-        std::cout << ptr->symbol().c_str() << " ";
+        std::print("{} ", ptr->symbol());
       } else {
-        std::cout << ". ";
+        std::print(". ");
       }
     }
-    std::cout << "║\n";
+    std::print("║\n");
   }
-  std::cout << bottom << "\n";
+  std::print("{}\n", bottom);
 }
 
 void Game::ShowStatus() const { character_->ShowStatus(); }
@@ -371,5 +371,5 @@ bool Game::IsFinish() const { return !winner_.empty(); }
 void Game::Finish() {
   DrawMap();
   ShowStatus();
-  std::cout << "Game over! " << winner_ << " wins!\n";
+  std::print("Game over! {} wins!\n", winner_);
 }

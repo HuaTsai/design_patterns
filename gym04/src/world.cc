@@ -2,7 +2,7 @@
 
 #include <algorithm>
 #include <format>
-#include <iostream>
+#include <print>
 #include <random>
 
 #include "cancel_collision.hpp"
@@ -36,25 +36,25 @@ World::World() : sprites_(kWorldLength) {
 }
 
 void World::Draw() const {
-  std::cout << "0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9\n";
+  std::print("0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9\n");
   for (const auto &sprite : sprites_) {
     if (sprite) {
-      std::cout << sprite->entity() << " ";
+      std::print("{} ", sprite->entity());
     } else {
-      std::cout << "_ ";
+      std::print("_ ");
     }
   }
-  std::cout << "\n";
+  std::print("\n");
 }
 
 void World::Move(int x1, int x2) {
   if (x1 < 0 || x2 < 0 || x1 >= kWorldLength || x2 >= kWorldLength) {
-    std::cout << "Out of range coordinate(s)\n";
+    std::print("Out of range coordinate(s)\n");
     return;
   }
 
   if (!sprites_[x1]) {
-    std::cout << std::format("No sprite at location {}\n", x1);
+    std::print("No sprite at location {}\n", x1);
     return;
   }
 

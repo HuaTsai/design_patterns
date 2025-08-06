@@ -1,6 +1,6 @@
 #include "damage_collision.hpp"
 
-#include <iostream>
+#include <print>
 
 bool DamageCollision::Match(std::vector<std::shared_ptr<Sprite>> &sprites, int x1, int x2) {
   auto &s1 = *sprites[x1].get();
@@ -20,12 +20,12 @@ bool DamageCollision::Match(std::vector<std::shared_ptr<Sprite>> &sprites, int x
 void DamageCollision::CollideImpl(std::vector<std::shared_ptr<Sprite>> &sprites, int x1, int x2) {
   auto p1 = dynamic_pointer_cast<HeroSprite>(sprites[x1]);
   auto p2 = dynamic_pointer_cast<HeroSprite>(sprites[x2]);
-  std::cout << "Hero collided with fire and is damaged";
+  std::print("Hero collided with fire and is damaged");
   if (p1) {
     p1->Damage(10);
     if (p1->hp() <= 0) {
       sprites[x1].reset();
-      std::cout << "... died, RIP";
+      std::print("... died, RIP");
     }
     sprites[x2].reset();
     swap(sprites[x1], sprites[x2]);
@@ -33,9 +33,9 @@ void DamageCollision::CollideImpl(std::vector<std::shared_ptr<Sprite>> &sprites,
     p2->Damage(10);
     if (p2->hp() <= 0) {
       sprites[x2].reset();
-      std::cout << "... died, RIP";
+      std::print("... died, RIP");
     }
     sprites[x1].reset();
   }
-  std::cout << "\n";
+  std::print("\n");
 }

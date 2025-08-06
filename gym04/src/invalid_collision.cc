@@ -1,6 +1,6 @@
 #include "invalid_collision.hpp"
 
-#include <iostream>
+#include <print>
 
 #include "sprite.hpp"
 
@@ -25,5 +25,5 @@ bool InvalidCollision::Match(std::vector<std::shared_ptr<Sprite>> &sprites, int 
 
 void InvalidCollision::CollideImpl(std::vector<std::shared_ptr<Sprite>> & /* sprites */,
                                    int /* x1 */, int /* x2 */) {
-  std::cout << "Invalid collision\n";
+  std::print("Invalid collision\n");
 }

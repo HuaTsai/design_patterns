@@ -18,11 +18,13 @@ bool StraightCardPatternRecognizer::Match(const std::vector<std::shared_ptr<Card
   return ranks == std::vector<int>({0, 1, 2, 3, 4}) || ranks == std::vector<int>({1, 2, 3, 4, 5}) ||
          ranks == std::vector<int>({2, 3, 4, 5, 6}) || ranks == std::vector<int>({3, 4, 5, 6, 7}) ||
          ranks == std::vector<int>({4, 5, 6, 7, 8}) || ranks == std::vector<int>({5, 6, 7, 8, 9}) ||
-         ranks == std::vector<int>({6, 7, 8, 9, 10}) || ranks == std::vector<int>({7, 8, 9, 10, 11}) ||
+         ranks == std::vector<int>({6, 7, 8, 9, 10}) ||
+         ranks == std::vector<int>({7, 8, 9, 10, 11}) ||
          ranks == std::vector<int>({8, 9, 10, 11, 12}) ||
          ranks == std::vector<int>({0, 9, 10, 11, 12}) ||
          ranks == std::vector<int>({0, 1, 10, 11, 12}) ||
-         ranks == std::vector<int>({0, 1, 2, 11, 12}) || ranks == std::vector<int>({0, 1, 2, 3, 12});
+         ranks == std::vector<int>({0, 1, 2, 11, 12}) ||
+         ranks == std::vector<int>({0, 1, 2, 3, 12});
 }
 
 std::shared_ptr<CardPattern> StraightCardPatternRecognizer::CreateConcreteCardPatternImpl(

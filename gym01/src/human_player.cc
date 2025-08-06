@@ -1,5 +1,6 @@
 #include "human_player.hpp"
 
+#include <print>
 #include <unordered_set>
 
 #include "game.hpp"
@@ -7,22 +8,22 @@
 HumanPlayer::HumanPlayer(std::weak_ptr<Game> game) : Player(game) {}
 
 std::optional<int> HumanPlayer::MakeExchangeDecision() {
-  std::cout << std::format("{}'s Decision (Y/N)? ", name());
+  std::print("{}'s Decision (Y/N)? ", name());
   char c = 0;
   std::cin >> c;
   if (std::tolower(c) == 'y') {
     if (auto g = game()) {
       auto players = g->players();
-      std::cout << std::format("Which player do {} want to exchange hands?\n", name());
+      std::print("Which player do {} want to exchange hands?\n", name());
 
       std::unordered_set<int> options;
       for (size_t i = 0; i < players.size(); ++i) {
         if (players[i].get() != this) {
           options.insert(static_cast<int>(i + 1));
-          std::cout << std::format("{}: {}\n", i + 1, players[i]->name());
+          std::print("{}: {}\n", i + 1, players[i]->name());
         }
       }
-      std::cout << std::format("{}'s Option? ", name());
+      std::print("{}'s Option? ", name());
 
       int index = 0;
       std::cin >> index;
@@ -31,7 +32,7 @@ std::optional<int> HumanPlayer::MakeExchangeDecision() {
       }
 
       Exchange(players[index - 1]);
-      std::cout << "Exchange finished\n";
+      std::print("Exchange finished\n");
       return index - 1;
     }
     throw std::runtime_error("Cannot get game object");
@@ -44,18 +45,18 @@ std::optional<int> HumanPlayer::MakeExchangeDecision() {
 
 std::shared_ptr<Card> HumanPlayer::Show() {
   if (hand().empty()) {
-    std::cout << std::format("{} has no available card, skip\n", name());
+    std::print("{} has no available card, skip\n", name());
     return nullptr;
   }
-  std::cout << std::format("{} chooses card:\n", name());
+  std::print("{} chooses card:\n", name());
   for (size_t i = 0; i < hand().size(); ++i) {
-    std::cout << std::format("{}: {}\n", i + 1, *hand()[i]);
+    std::print("{}: {}\n", i + 1, *hand()[i]);
   }
 
   if (hand().size() == 1) {
-    std::cout << std::format("{}'s Decision (1)? ", name());
+    std::print("{}'s Decision (1)? ", name());
   } else {
-    std::cout << std::format("{}'s Decision (1~{})? ", name(), hand().size());
+    std::print("{}'s Decision (1~{})? ", name(), hand().size());
   }
 
   int idx = 0;
@@ -67,6 +68,6 @@ std::shared_ptr<Card> HumanPlayer::Show() {
   auto ret = hand()[idx - 1];
   swap(hand()[idx - 1], hand().back());
   hand().pop_back();
-  std::cout << std::format("{} shows {}\n", name(), *ret);
+  std::print("{} shows {}\n", name(), *ret);
   return ret;
 }

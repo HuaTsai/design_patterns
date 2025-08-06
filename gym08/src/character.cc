@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 #include <character.hpp>
-#include <iostream>
+#include <print>
 
 namespace {
 char getkey() {
@@ -20,7 +20,7 @@ char getkey() {
 }  // namespace
 
 Options Character::ActionNormal() {
-  std::cout << "Input your action (\"↑\", \"↓\", \"←\", \"→\", \"a\") ";
+  std::print("Input your action (\"↑\", \"↓\", \"←\", \"→\", \"a\") ");
   char ch = getkey();
 
   if (ch == '\033') {
@@ -48,7 +48,7 @@ Options Character::ActionNormal() {
 }
 
 Options Character::ActionLeftRight() {
-  std::cout << "Input your action (\"←\", \"→\") ";
+  std::print("Input your action (\"←\", \"→\") ");
   char ch = getkey();
 
   if (ch == '\033') {
@@ -70,7 +70,7 @@ Options Character::ActionLeftRight() {
 }
 
 Options Character::ActionUpDown() {
-  std::cout << "Input your action (\"↑\", \"↓\") ";
+  std::print("Input your action (\"↑\", \"↓\") ");
   char ch = getkey();
 
   if (ch == '\033') {
@@ -107,11 +107,11 @@ Options Character::Action() {
 }
 
 void Character::ShowStatus() const {
-  std::cout << "State: " << state()->name();
   if (state()->remaining_turns() > 0) {
-    std::cout << " (" << state()->remaining_turns() << ")";
+    std::print("State: {} ({}) | HP: {}\n", state()->name(), state()->remaining_turns(), hp());
+  } else {
+    std::print("State: {} | HP: {}\n", state()->name(), hp());
   }
-  std::cout << " | HP: " << hp() << "\n";
 }
 
 void Character::Turn(Direction dir) {

@@ -3,10 +3,7 @@
 
 Prescription::Prescription(const std::string &name, const std::string &potential_disease,
                            const std::vector<std::string> &medicines, const std::string &usage)
-    : name_(name),
-      potential_disease_(potential_disease),
-      medicines_(medicines),
-      usage_(usage) {
+    : name_(name), potential_disease_(potential_disease), medicines_(medicines), usage_(usage) {
   if (name_.size() < 4 || name_.size() > 30) {
     throw std::invalid_argument("名字長度應在 4 到 30 之間");
   }
