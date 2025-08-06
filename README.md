@@ -24,20 +24,25 @@ This project demonstrates various design patterns in C++ through a series of exa
 13. **Gym13**: Demonstrates the use of the Composite pattern in a logger system.
 14. **Gym14**: Implements the Decorator pattern in an HTTP client.
 15. **Gym15**: Demonstrates the use of Finite State Machine in a community system.
+16. **Gym16**: TODO
 
 ## Build
 
-- Tools:
+- Dependencies
   - `nlohmann-json3-dev`
+- Build tool chains
   - `cmake >= 3.10`
   - `g++-14`
+  - `ninja-build`
   - `clang-format`
     - Local 18
     - Github CI 19
-- Build Command
+  - `clang-tidy`
+    - Local 18
+- Commands
 
   ```bash
-  cmake -B build
-  cmake --build build -j$(nproc)
+  cmake -B build -G Ninja
+  cmake --build build
   cmake --build build --target format  # format code
   ```

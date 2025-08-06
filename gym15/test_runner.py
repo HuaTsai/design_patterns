@@ -51,7 +51,7 @@ def build_project(project_root: Path) -> bool:
             build_dir.mkdir()
 
             # Execute cmake initialization
-            cmake_cmd = ["cmake", "-B", str(build_dir), str(project_root)]
+            cmake_cmd = ["cmake", "-B", "build", "-G", "Ninja"]
             result = subprocess.run(
                 cmake_cmd, cwd=project_root, capture_output=True, text=True
             )
@@ -61,10 +61,7 @@ def build_project(project_root: Path) -> bool:
                 return False
 
         # Execute compilation
-        nproc_result = subprocess.run(["nproc"], capture_output=True, text=True)
-        nproc = nproc_result.stdout.strip() if nproc_result.returncode == 0 else "4"
-
-        build_cmd = ["cmake", "--build", "build", f"-j{nproc}"]
+        build_cmd = ["cmake", "--build", "build"]
         result = subprocess.run(
             build_cmd, cwd=project_root, capture_output=True, text=True
         )

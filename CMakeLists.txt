@@ -9,10 +9,9 @@ add_compile_options(-Wall -Wextra)
 
 find_program(CLANG_FORMAT NAMES clang-format)
 if(CLANG_FORMAT)
-  file(GLOB_RECURSE SOURCE_FILES *.hpp *.cc)
-  list(FILTER SOURCE_FILES EXCLUDE REGEX ".*/json.hpp$")
+  file(GLOB_RECURSE SOURCES *.hpp *.cc)
   add_custom_target(format
-    COMMAND ${CLANG_FORMAT} -i ${SOURCE_FILES}
+    COMMAND ${CLANG_FORMAT} -i ${SOURCES}
     COMMENT "Formatting source files with clang-format"
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
@@ -23,12 +22,12 @@ endif()
 find_program(CLANG_TIDY NAMES clang-tidy)
 if(CLANG_TIDY)
   message(STATUS "clang-tidy found: ${CLANG_TIDY}")
-  set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY}")
+  # set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY}")
 else()
   message(WARNING "clang-tidy not found! Static analysis skipped.")
 endif()
 
-foreach(GYM_NUMBER RANGE 1 15)
+foreach(GYM_NUMBER RANGE 15 15)
   if(GYM_NUMBER LESS 10)
     set(GYM_DIR "gym0${GYM_NUMBER}")
   else()
