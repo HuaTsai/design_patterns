@@ -31,5 +31,4 @@ void RecordState::OnEnter() {
 
 Event RecordState::OnDo(Event event) { return event; }
 
-void RecordState::OnExit() { /* nop */
-}
+void RecordState::OnExit() { /* nop */ }
