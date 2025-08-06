@@ -20,7 +20,7 @@ std::shared_ptr<Skill> Skill::Create(const std::string &name, std::shared_ptr<Ro
   };
   // clang-format on
 
-  if (!creation_map.count(name)) {  // NOLINT
+  if (!creation_map.contains(name)) {
     throw std::invalid_argument("技能不存在");
   }
 
@@ -162,20 +162,21 @@ void CurseSkill::PerformSkill() {
 void OnePunchSkill::PerformSkill() {
   auto targets = RequestForTargets();
   std::print("{} 對 {} 使用了 {}。\n", role()->name(), targets[0]->name(), name());
-  // NOLINTBEGIN
   if (targets[0]->hp() >= 500) {
     role()->Attack(targets[0], 300);
-  } else if (typeid(*targets[0]->state()) == typeid(PoisonedState) ||
-             typeid(*targets[0]->state()) == typeid(PetrochemicalState)) {
-    for (int i = 0; i < 3 && targets[0]->IsAlive(); ++i) {
-      role()->Attack(targets[0], 80);
-    }
-  } else if (typeid(*targets[0]->state()) == typeid(CheerupState)) {
-    role()->Attack(targets[0], 100);
-    targets[0]->SetState(std::make_shared<NormalState>(targets[0]));
   } else {
-    role()->Attack(targets[0], 100);
+    const auto &target_state = *targets[0]->state();
+    if (typeid(target_state) == typeid(PoisonedState) ||
+        typeid(target_state) == typeid(PetrochemicalState)) {
+      for (int i = 0; i < 3 && targets[0]->IsAlive(); ++i) {
+        role()->Attack(targets[0], 80);
+      }
+    } else if (typeid(target_state) == typeid(CheerupState)) {
+      role()->Attack(targets[0], 100);
+      targets[0]->SetState(std::make_shared<NormalState>(targets[0]));
+    } else {
+      role()->Attack(targets[0], 100);
+    }
   }
-  // NOLINTEND
   role()->ConsumeMp(mp_cost());
 }
