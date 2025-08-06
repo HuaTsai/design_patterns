@@ -32,12 +32,12 @@ int main() {
   // auto p0 = std::make_shared<Individual>(1, Gender::kMale, 20, "Hi, I am p0",
   // "Basketball", Coord{1, 2}); std::vector<std::shared_ptr<Individual>>
   // individuals{p0, p1, p2, p3, p4};
-  std::vector<std::shared_ptr<Individual>> individuals{p1, p2, p3, p4};
+  const std::vector<std::shared_ptr<Individual>> individuals{p1, p2, p3, p4};
 
   // auto strategy = std::shared_ptr<Strategy>(new HabitStrategy(individuals));
   auto strategy = std::shared_ptr<Strategy>(new DistanceStrategy(individuals));
 
-  auto &s = *strategy.get();  // avoid clang warning
+  auto &s = *strategy;  // avoid clang warning
   if (typeid(s) == typeid(HabitStrategy)) {
     std::cout << "Use habitStrategy\n";
   } else if (typeid(s) == typeid(DistanceStrategy)) {

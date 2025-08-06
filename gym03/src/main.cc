@@ -10,7 +10,7 @@
 
 int main() {
   std::cout << "Welcome to Card Game!\nShowdown(0) or UNO(1)? ";
-  int gametype;
+  int gametype = 0;
   std::cin >> gametype;
 
   std::shared_ptr<Deck> deck;
@@ -23,7 +23,7 @@ int main() {
   }
 
   std::cout << "Enter number of ai players (0-4)? ";
-  int num_ai;
+  int num_ai = 0;
   std::cin >> num_ai;
   if (num_ai < 0 || num_ai > 4) {
     throw std::runtime_error("Invalid number of AI players");

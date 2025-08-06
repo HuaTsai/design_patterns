@@ -37,7 +37,7 @@ World::World() : sprites_(kWorldLength) {
 
 void World::Draw() const {
   std::cout << "0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9\n";
-  for (auto &sprite : sprites_) {
+  for (const auto &sprite : sprites_) {
     if (sprite) {
       std::cout << sprite->entity() << " ";
     } else {

@@ -71,6 +71,8 @@ std::string PokerCard::string() const {
 }
 
 std::strong_ordering PokerCard::operator<=>(const PokerCard &other) const {
-  if (auto cmp = (rank_ <=> other.rank_); cmp != 0) return cmp;
+  if (auto cmp = (rank_ <=> other.rank_); cmp != 0) {
+    return cmp;
+  }
   return suit_ <=> other.suit_;
 }

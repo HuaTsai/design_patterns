@@ -22,8 +22,8 @@ bool Player::IsEmptyHandCards() const { return hand_cards_.empty(); }
 void Player::PrintHandCards() const {
   std::string nums;
   for (size_t i = 0; i < hand_cards_.size(); ++i) {
-    std::string num = std::to_string(i);
-    int pad = hand_cards_[i]->string().size() - num.size();
+    const std::string num = std::to_string(i);
+    const int pad = static_cast<int>(hand_cards_[i]->string().size()) - static_cast<int>(num.size());
     if (i + 1 != hand_cards_.size()) {
       nums += num + std::string(pad + 1, ' ');
     } else {
@@ -32,7 +32,7 @@ void Player::PrintHandCards() const {
   }
 
   std::string cards;
-  for (auto card : hand_cards_) {
+  for (const auto &card : hand_cards_) {
     if (card != hand_cards_.back()) {
       cards += card->string() + " ";
     } else {

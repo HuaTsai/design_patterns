@@ -23,7 +23,7 @@ std::shared_ptr<CardPattern> HumanPlayer::FirstPlay(bool club_three_required) {
     }
 
     std::stringstream ss(cmd);
-    int num;
+    int num = 0;
     cards.clear();
     while (ss >> num) {
       cards.push_back(hand_cards_[num]);
@@ -39,14 +39,16 @@ std::shared_ptr<CardPattern> HumanPlayer::FirstPlay(bool club_three_required) {
     }
 
     ret = recognizer_->CreateConcreteCardPattern(cards);
-    if (ret) break;
+    if (ret) {
+      break;
+    }
 
     std::cout << "此牌型不合法，請再嘗試一次。\n";
     PrintHandCards();
     std::getline(std::cin, cmd);
   }
 
-  for (auto card : cards) {
+  for (const auto &card : cards) {
     std::erase(hand_cards_, card);
   }
 
@@ -72,15 +74,15 @@ std::shared_ptr<CardPattern> HumanPlayer::FollowPlay(std::shared_ptr<CardPattern
     cards.clear();
 
     std::stringstream ss(cmd);
-    int num;
+    int num = 0;
     while (ss >> num) {
       cards.push_back(hand_cards_[num]);
     }
 
     ret = recognizer_->CreateConcreteCardPattern(cards);
 
-    auto &type1 = *top_play.get();
-    auto &type2 = *ret.get();
+    auto &type1 = *top_play;
+    auto &type2 = *ret;
     if (ret && typeid(type1) == typeid(type2) && *ret > *top_play) {
       break;
     }
@@ -90,7 +92,7 @@ std::shared_ptr<CardPattern> HumanPlayer::FollowPlay(std::shared_ptr<CardPattern
     std::getline(std::cin, cmd);
   }
 
-  for (auto card : cards) {
+  for (const auto &card : cards) {
     std::erase(hand_cards_, card);
   }
 

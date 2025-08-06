@@ -74,9 +74,9 @@ void Big2::RoundStart() {
       top_play_ = top_player_->FirstPlay(true);
     }
   } else {
-    top_play_ = top_player_->FirstPlay();
+    top_play_ = top_player_->FirstPlay(false);
     while (!top_play_) {
-      top_play_ = top_player_->FirstPlay();
+      top_play_ = top_player_->FirstPlay(false);
     }
   }
   if (top_player_->IsEmptyHandCards()) {
@@ -93,7 +93,8 @@ void Big2::RoundStart() {
     if (play && top_player_->IsEmptyHandCards()) {
       winner_ = top_player_;
       break;
-    } else if (play) {
+    }
+    if (play) {
       top_play_ = play;
       consecutive_passes = 0;
     } else {

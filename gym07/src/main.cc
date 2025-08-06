@@ -18,7 +18,7 @@ void BindSingleCommandInstruction(const std::vector<Cmd> &cmds,
   std::cout << "Key: ";
   std::string c;
   std::cin >> c;
-  if (c.size() != 1 || !std::isalpha(c[0])) {
+  if (c.size() != 1 || (std::isalpha(c[0]) == 0)) {
     throw std::invalid_argument("不合法的指令");
   }
 
@@ -27,7 +27,7 @@ void BindSingleCommandInstruction(const std::vector<Cmd> &cmds,
     std::cout << std::format("({}) {}\n", i, cmds[i].name);
   }
 
-  int cmd;
+  int cmd = 0;
   std::cin >> cmd;
   if (cmd < 0 || cmd >= static_cast<int>(cmds.size())) {
     throw std::invalid_argument("不合法的指令");
@@ -40,7 +40,7 @@ void BindMacroCommandInstruction(const std::vector<Cmd> &cmds, std::shared_ptr<K
   std::cout << "Key: ";
   std::string c;
   std::cin >> c;
-  if (c.size() != 1 || !std::isalpha(c[0])) {
+  if (c.size() != 1 || (std::isalpha(c[0]) == 0)) {
     throw std::invalid_argument("不合法的指令");
   }
   std::cin.ignore();  // skip the newline character
@@ -55,7 +55,7 @@ void BindMacroCommandInstruction(const std::vector<Cmd> &cmds, std::shared_ptr<K
   std::getline(std::cin, cmdstr);
   std::stringstream ss(cmdstr);
   std::vector<std::shared_ptr<Command>> macro;
-  int cmd;
+  int cmd = 0;
   while (ss >> cmd) {
     macro.push_back(cmds[cmd].cmd);
   }
@@ -65,11 +65,11 @@ void BindMacroCommandInstruction(const std::vector<Cmd> &cmds, std::shared_ptr<K
 int main() {
   auto tank = std::make_shared<Tank>();
   auto telecom = std::make_shared<Telecom>();
-  std::shared_ptr<Command> cmd_mtf = std::make_shared<MoveTankForward>(tank);
-  std::shared_ptr<Command> cmd_mtb = std::make_shared<MoveTankBackward>(tank);
-  std::shared_ptr<Command> cmd_ct = std::make_shared<ConnectTelecom>(telecom);
-  std::shared_ptr<Command> cmd_dt = std::make_shared<DisconnectTelecom>(telecom);
-  std::shared_ptr<Command> cmd_reset = nullptr;
+  const std::shared_ptr<Command> cmd_mtf = std::make_shared<MoveTankForward>(tank);
+  const std::shared_ptr<Command> cmd_mtb = std::make_shared<MoveTankBackward>(tank);
+  const std::shared_ptr<Command> cmd_ct = std::make_shared<ConnectTelecom>(telecom);
+  const std::shared_ptr<Command> cmd_dt = std::make_shared<DisconnectTelecom>(telecom);
+  const std::shared_ptr<Command> cmd_reset = nullptr;
   auto keyboard = std::make_shared<Keyboard>();
 
   std::vector<Cmd> cmds;
@@ -91,7 +91,7 @@ int main() {
       throw std::invalid_argument("不合法的指令");
     }
     if (cmd[0] == '1') {
-      char set_macro;
+      char set_macro = 0;
       std::cout << "設置巨集指令 (y/n): ";
       std::cin >> set_macro;
       if (std::tolower(set_macro) == 'y') {
@@ -105,7 +105,7 @@ int main() {
       keyboard->Undo();
     } else if (cmd[0] == '3') {
       keyboard->Redo();
-    } else if (std::isalpha(cmd[0])) {
+    } else if (std::isalpha(cmd[0]) != 0) {
       keyboard->Press(cmd[0]);
     } else {
       throw std::invalid_argument("不合法的指令");

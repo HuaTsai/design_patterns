@@ -19,7 +19,7 @@ void Channel::Unsubscribe(std::shared_ptr<ChannelSubscriber> subscriber) {
 
 void Channel::Upload(std::shared_ptr<Video> video) {
   std::cout << std::format("頻道 {} 上架了一則新影片 \"{}\"。\n", name_, video->title());
-  for (auto subscriber : subscribers_) {
+  for (const auto &subscriber : subscribers_) {
     subscriber->Receive(shared_from_this(), video);
   }
 }

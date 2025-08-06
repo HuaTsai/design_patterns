@@ -6,7 +6,9 @@
 Card::Card(int rank, Suit suit) : rank_(rank), suit_(suit) {}
 
 auto Card::operator<=>(const Card &other) const {
-  if (auto cmp = ((rank_ + 11) % 13) <=> ((other.rank_ + 11) % 13); cmp != 0) return cmp;
+  if (auto cmp = ((rank_ + 11) % 13) <=> ((other.rank_ + 11) % 13); cmp != 0) {
+    return cmp;
+  }
   return suit_ <=> other.suit_;
 }
 

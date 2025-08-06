@@ -7,7 +7,7 @@ System::System(const std::vector<std::shared_ptr<Individual>> &individuals,
     : individuals_(individuals), strategy_(strategy) {
   std::unordered_set<int> idset;
   for (auto &individual : individuals_) {
-    if (idset.count(individual->id())) {
+    if (idset.contains(individual->id())) {
       throw std::invalid_argument("Duplicate id");
     }
     idset.insert(individual->id());

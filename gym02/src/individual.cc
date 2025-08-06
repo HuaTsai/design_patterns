@@ -9,7 +9,9 @@ namespace {
 std::string trim(const std::string &s) {
   constexpr const char *whitespace = " \t\n\r\f\v";
   const auto first{s.find_first_not_of(whitespace)};
-  if (first == std::string::npos) return {};
+  if (first == std::string::npos) {
+    return {};
+  }
   const auto last{s.find_last_not_of(whitespace)};
   return s.substr(first, last - first + 1);
 };
@@ -36,7 +38,7 @@ Individual::Individual(int id, Gender gender, int age, const std::string &intro,
   auto split_view =
       std::ranges::views::split(habits, ',') | std::ranges::views::transform([](auto &&word_view) {
         auto word = trim(std::string(word_view.begin(), word_view.end()));
-        if (word.size() < 1 || word.size() > 10) {
+        if (word.empty() || word.size() > 10) {
           throw std::invalid_argument("habit should be between 1 to 10 characters");
         }
         return word;

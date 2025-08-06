@@ -8,9 +8,10 @@ int main() {
   std::cout << "Initial world:\n";
   world.Draw();
 
-  std::string instruct = "Move command \"x1 x2\" or EOF (^D)? ";
+  const std::string instruct = "Move command \"x1 x2\" or EOF (^D)? ";
   std::cout << instruct;
-  int x1, x2;
+  int x1 = 0;
+  int x2 = 0;
   while (std::cin >> x1 >> x2) {
     world.Move(x1, x2);
     world.Draw();

@@ -12,7 +12,7 @@ std::shared_ptr<Card> Player::Draw(std::shared_ptr<Deck> deck) {
 
 void Player::Exchange(std::shared_ptr<Player> player) { hand_.swap(player->hand_); }
 
-bool Player::IsEmptyHand() const { return !hand_.size(); }
+bool Player::IsEmptyHand() const { return hand_.empty(); }
 
 void Player::set_name(const std::string &name) { name_ = name; }
 

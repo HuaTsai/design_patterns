@@ -23,15 +23,16 @@ const std::unordered_map<Rank, std::string> rank_to_str_map = {
     {Rank::kTwo, "2"}};
 }  // namespace
 
-Card::Card(const std::string &card) {
-  suit_ = char_to_suit_map.at(card[0]);
+Card::Card(const std::string &card) : suit_(char_to_suit_map.at(card[0])) {
   rank_ = str_to_rank_map.at(card.substr(2, card.size() - 3));
 }
 
 Card::Card(Suit suit, Rank rank) : suit_(suit), rank_(rank) {}
 
 std::strong_ordering Card::operator<=>(const Card &other) const {
-  if (auto cmp = (rank_ <=> other.rank_); cmp != 0) return cmp;
+  if (auto cmp = (rank_ <=> other.rank_); cmp != 0) {
+    return cmp;
+  }
   return suit_ <=> other.suit_;
 }
 

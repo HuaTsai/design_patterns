@@ -2,6 +2,6 @@
 
 class Telecom {
  public:
-  void Connect();
-  void Disconnect();
+  static void Connect();
+  static void Disconnect();
 };

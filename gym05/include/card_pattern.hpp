@@ -30,6 +30,7 @@ std::ostream &operator<<(std::ostream &os, std::shared_ptr<CardPattern> card);
 class CardPatternRecognizer {
  public:
   explicit CardPatternRecognizer(std::shared_ptr<CardPatternRecognizer> next = nullptr);
+  virtual ~CardPatternRecognizer() = default;
   virtual bool Match(const std::vector<std::shared_ptr<Card>> &cards) const = 0;
   virtual std::shared_ptr<CardPattern> CreateConcreteCardPatternImpl(
       const std::vector<std::shared_ptr<Card>> &cards) const = 0;
