@@ -11,7 +11,7 @@ std::shared_ptr<Skill> Hero::S1Input() {
   for (size_t i = 0; i < allskills.size(); i++) {
     std::print(" ({}) {}", i + 1, allskills[i]->name());
   }
-  std::println();
+  std::print("\n");
 
   int input = -1;
   std::cin >> input;
@@ -22,12 +22,12 @@ std::shared_ptr<Skill> Hero::S1Input() {
 
     const auto &skill = allskills.at(input - 1);
     if (skill->mp_cost() > mp()) {
-      std::println("你缺乏 MP，不能進行此行動。");
+      std::print("你缺乏 MP，不能進行此行動。\n");
       std::print("選擇行動：(0) 普通攻擊");
       for (size_t i = 0; i < allskills.size(); i++) {
         std::print(" ({}) {}", i + 1, allskills[i]->name());
       }
-      std::println();
+      std::print("\n");
       std::cin >> input;
       continue;
     }
@@ -44,7 +44,7 @@ std::shared_ptr<Role> Hero::S2Input(const std::vector<std::shared_ptr<Role>> &ca
   for (size_t i = 0; i < candidates.size(); i++) {
     std::print(" ({}) {}", i, candidates[i]->name());
   }
-  std::println();
+  std::print("\n");
 
   int ret = -1;
   std::cin >> ret;
@@ -65,7 +65,7 @@ std::vector<std::shared_ptr<Role>> Hero::S2InputMultiple(
       std::print("({}) {} ", i, candidates[i]->name());
     }
   }
-  std::println();
+  std::print("\n");
 
   std::vector<std::shared_ptr<Role>> ret;
   ret.reserve(slots);
