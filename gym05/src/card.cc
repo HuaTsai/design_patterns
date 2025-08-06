@@ -23,7 +23,7 @@ const std::unordered_map<Rank, std::string> rank_to_str_map = {
     {Rank::kTwo, "2"}};
 }  // namespace
 
-Card::Card(std::string card) {
+Card::Card(const std::string& card) {
   suit_ = char_to_suit_map.at(card[0]);
   rank_ = str_to_rank_map.at(card.substr(2, card.size() - 3));
 }

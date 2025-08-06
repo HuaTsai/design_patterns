@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-CardGame::CardGame(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Player>> players,
+CardGame::CardGame(std::shared_ptr<Deck> deck, const std::vector<std::shared_ptr<Player>>& players,
                    int player_initial_cards)
     : deck_(deck), players_(players), player_initial_cards_(player_initial_cards) {}
 

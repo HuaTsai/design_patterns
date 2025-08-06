@@ -15,7 +15,7 @@ Deck::Deck() {
   // clang-format on
 }
 
-Deck::Deck(std::vector<std::shared_ptr<Card>> cards) : cards_(cards) {}
+Deck::Deck(const std::vector<std::shared_ptr<Card>>& cards) : cards_(cards) {}
 
 void Deck::Shuffle() {
   auto dre = std::default_random_engine(std::random_device{}());

@@ -6,9 +6,9 @@
 
 class PatientDatabase {
  public:
-  Patient &GetPatientByName(std::string name);
-  void LoadPatientsJsonFile(std::string dbpath);
-  void SavePatientsJsonFile(std::string dbpath);
+  Patient &GetPatientByName(const std::string& name);
+  void LoadPatientsJsonFile(const std::string& dbpath);
+  void SavePatientsJsonFile(const std::string& dbpath);
 
  private:
   std::unordered_map<std::string, Patient> patients_;

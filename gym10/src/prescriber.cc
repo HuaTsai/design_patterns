@@ -11,13 +11,13 @@
 
 Prescriber::Prescriber() : prescription_handler_(nullptr) {}
 
-Prescription Prescriber::Prescribe(const Patient &patient, std::vector<Symptom> symptoms) {
+Prescription Prescriber::Prescribe(const Patient &patient, const std::vector<Symptom>& symptoms) {
   std::println("Prescribing {}...", patient.name());
   std::this_thread::sleep_for(std::chrono::seconds(3));
   return prescription_handler_->Prescribe(patient, symptoms);
 }
 
-void Prescriber::LoadSupportedPotentialDiseases(std::string filepath) {
+void Prescriber::LoadSupportedPotentialDiseases(const std::string& filepath) {
   if (!std::filesystem::exists(filepath)) {
     throw std::runtime_error("File not found: " + filepath);
   }

@@ -1,8 +1,8 @@
 #include <prescription/prescription.hpp>
 #include <stdexcept>
 
-Prescription::Prescription(std::string name, std::string potential_disease,
-                           std::vector<std::string> medicines, std::string usage)
+Prescription::Prescription(const std::string& name, const std::string& potential_disease,
+                           const std::vector<std::string>& medicines, const std::string& usage)
     : name_(std::move(name)),
       potential_disease_(std::move(potential_disease)),
       medicines_(std::move(medicines)),

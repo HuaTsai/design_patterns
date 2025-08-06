@@ -4,7 +4,7 @@
 #include <sstream>
 #include <super_relationship_analyzer_adapter.hpp>
 
-std::shared_ptr<RelationshipGraph> SuperRelationshipAnalyzerAdapter::Parse(std::string script) {
+std::shared_ptr<RelationshipGraph> SuperRelationshipAnalyzerAdapter::Parse(const std::string& script) {
   std::ifstream ifs(script);
   if (!ifs) {
     throw std::runtime_error("Error opening input file");
@@ -47,8 +47,8 @@ std::shared_ptr<RelationshipGraph> SuperRelationshipAnalyzerAdapter::Parse(std::
   return std::make_shared<RelationshipGraphImpl>(analyzer_);
 }
 
-std::vector<std::string> SuperRelationshipAnalyzerAdapter::GetMutualFriends(std::string name1,
-                                                                            std::string name2) {
+std::vector<std::string> SuperRelationshipAnalyzerAdapter::GetMutualFriends(const std::string& name1,
+                                                                            const std::string& name2) {
   std::vector<std::string> ret;
   for (const auto &name : names_) {
     if (name == name1 || name == name2) {

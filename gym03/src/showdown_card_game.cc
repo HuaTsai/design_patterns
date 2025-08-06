@@ -4,7 +4,7 @@
 #include <utility>
 
 ShowdownCardGame::ShowdownCardGame(std::shared_ptr<Deck> deck,
-                                   std::vector<std::shared_ptr<Player>> players)
+                                   const std::vector<std::shared_ptr<Player>>& players)
     : CardGame(deck, players, kShowdownInitialCards) {}
 
 void ShowdownCardGame::PlayPhase() {

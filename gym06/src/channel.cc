@@ -5,7 +5,7 @@
 
 #include "channel_subscriber.hpp"
 
-Channel::Channel(std::string name) : name_(name) {}
+Channel::Channel(const std::string& name) : name_(name) {}
 
 void Channel::Subscribe(std::shared_ptr<ChannelSubscriber> subscriber) {
   std::cout << std::format("{} 訂閱了 {}。\n", subscriber->name(), name_);

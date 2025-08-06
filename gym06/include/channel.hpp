@@ -10,7 +10,7 @@ class ChannelSubscriber;
 
 class Channel : public std::enable_shared_from_this<Channel> {
  public:
-  explicit Channel(std::string name);
+  explicit Channel(const std::string& name);
   void Subscribe(std::shared_ptr<ChannelSubscriber> subscriber);
   void Unsubscribe(std::shared_ptr<ChannelSubscriber> subscriber);
   void Upload(std::shared_ptr<Video> video);
