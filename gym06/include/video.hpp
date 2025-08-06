@@ -4,8 +4,8 @@
 
 class Video {
  public:
-  explicit Video(const std::string& title, const std::string& description, int length);
-  void Like(const std::string& name);
+  explicit Video(const std::string &title, const std::string &description, int length);
+  void Like(const std::string &name);
 
   std::string title() const;
   std::string description() const;

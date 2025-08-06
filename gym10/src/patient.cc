@@ -1,8 +1,8 @@
 #include <patient.hpp>
 #include <stdexcept>
 
-Patient::Patient(const std::string& id, const std::string& name, Gender gender, int age, double height,
-                 double weight)
+Patient::Patient(const std::string &id, const std::string &name, Gender gender, int age,
+                 double height, double weight)
     : id_(std::move(id)),
       name_(std::move(name)),
       gender_(gender),

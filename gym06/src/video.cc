@@ -3,10 +3,10 @@
 #include <format>
 #include <iostream>
 
-Video::Video(const std::string& title, const std::string& description, int length)
+Video::Video(const std::string &title, const std::string &description, int length)
     : title_(title), description_(description), length_(length) {}
 
-void Video::Like(const std::string& name) {
+void Video::Like(const std::string &name) {
   std::cout << std::format("{} 對影片 \"{}\" 按讚。\n", name, title_);
 }
 

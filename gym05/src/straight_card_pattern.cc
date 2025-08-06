@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-bool StraightCardPatternRecognizer::Match(const std::vector<std::shared_ptr<Card>>& cards) const {
+bool StraightCardPatternRecognizer::Match(const std::vector<std::shared_ptr<Card>> &cards) const {
   if (cards.size() != 5) return false;
 
   std::vector<int> ranks;
@@ -27,6 +27,6 @@ bool StraightCardPatternRecognizer::Match(const std::vector<std::shared_ptr<Card
 }
 
 std::shared_ptr<CardPattern> StraightCardPatternRecognizer::CreateConcreteCardPatternImpl(
-    const std::vector<std::shared_ptr<Card>>& cards) const {
+    const std::vector<std::shared_ptr<Card>> &cards) const {
   return std::make_shared<StraightCardPattern>(cards, "順子");
 }

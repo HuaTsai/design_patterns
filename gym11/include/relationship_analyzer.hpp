@@ -7,8 +7,9 @@
 class RelationshipAnalyzer {
  public:
   RelationshipAnalyzer() = default;
-  virtual std::shared_ptr<RelationshipGraph> Parse(const std::string& script) = 0;
-  virtual std::vector<std::string> GetMutualFriends(const std::string& name1, const std::string& name2) = 0;
+  virtual std::shared_ptr<RelationshipGraph> Parse(const std::string &script) = 0;
+  virtual std::vector<std::string> GetMutualFriends(const std::string &name1,
+                                                    const std::string &name2) = 0;
 
   virtual ~RelationshipAnalyzer() = default;
   RelationshipAnalyzer(const RelationshipAnalyzer &) = delete;

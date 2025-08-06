@@ -5,8 +5,8 @@
 
 class Prescription {
  public:
-  Prescription(const std::string& name, const std::string& potential_disease, const std::vector<std::string>& medicines,
-               const std::string& usage);
+  Prescription(const std::string &name, const std::string &potential_disease,
+               const std::vector<std::string> &medicines, const std::string &usage);
 
   std::string name() const { return name_; }
   std::string potential_disease() const { return potential_disease_; }

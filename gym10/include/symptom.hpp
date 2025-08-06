@@ -5,7 +5,7 @@
 
 enum class Symptom { kSneeze, kHeadache, kCough, kSnore };
 
-inline Symptom GetSymptomFromString(const std::string& str) {
+inline Symptom GetSymptomFromString(const std::string &str) {
   if (str == "Sneeze") {
     return Symptom::kSneeze;
   }

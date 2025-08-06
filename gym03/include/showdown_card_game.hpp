@@ -7,7 +7,7 @@ class ShowdownCardGame : public CardGame {
   static constexpr int kShowdownTurns = 13;
 
  public:
-  ShowdownCardGame(std::shared_ptr<Deck> deck, const std::vector<std::shared_ptr<Player>>& players);
+  ShowdownCardGame(std::shared_ptr<Deck> deck, const std::vector<std::shared_ptr<Player>> &players);
 
   void PlayPhase() override;
 };

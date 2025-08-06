@@ -2,7 +2,7 @@
 
 #include <unordered_map>
 
-bool FullHouseCardPatternRecognizer::Match(const std::vector<std::shared_ptr<Card>>& cards) const {
+bool FullHouseCardPatternRecognizer::Match(const std::vector<std::shared_ptr<Card>> &cards) const {
   if (cards.size() != 5) return false;
 
   std::unordered_map<Rank, int> ranks;
@@ -15,6 +15,6 @@ bool FullHouseCardPatternRecognizer::Match(const std::vector<std::shared_ptr<Car
 }
 
 std::shared_ptr<CardPattern> FullHouseCardPatternRecognizer::CreateConcreteCardPatternImpl(
-    const std::vector<std::shared_ptr<Card>>& cards) const {
+    const std::vector<std::shared_ptr<Card>> &cards) const {
   return std::make_shared<FullHouseCardPattern>(cards, "葫蘆");
 }

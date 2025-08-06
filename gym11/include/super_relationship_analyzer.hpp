@@ -6,9 +6,10 @@
 
 class SuperRelationshipAnalyzer {
  public:
-  void Init(const std::string& script);
-  bool IsMutualFriend(const std::string& target_name, const std::string& name1, const std::string& name2);
-  bool HasConnection(const std::string& name1, const std::string& name2);
+  void Init(const std::string &script);
+  bool IsMutualFriend(const std::string &target_name, const std::string &name1,
+                      const std::string &name2);
+  bool HasConnection(const std::string &name1, const std::string &name2);
 
  private:
   UnionFind union_find_;

@@ -6,7 +6,7 @@
 
 class Case {
  public:
-  Case(int case_time, const std::vector<Symptom>& symptoms, const Prescription& prescription);
+  Case(int case_time, const std::vector<Symptom> &symptoms, const Prescription &prescription);
 
   int case_time() const { return case_time_; }
   const std::vector<Symptom> &symptoms() const { return symptoms_; }

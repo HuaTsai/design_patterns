@@ -2,7 +2,7 @@
 #include <nlohmann/json.hpp>
 #include <patient_database.hpp>
 
-Patient &PatientDatabase::GetPatientByName(const std::string& name) {
+Patient &PatientDatabase::GetPatientByName(const std::string &name) {
   for (auto &[id, p] : patients_) {
     if (p.name() == name) {
       return p;
@@ -11,7 +11,7 @@ Patient &PatientDatabase::GetPatientByName(const std::string& name) {
   throw std::runtime_error("Patient name " + name + " not found.");
 }
 
-void PatientDatabase::LoadPatientsJsonFile(const std::string& dbpath) {
+void PatientDatabase::LoadPatientsJsonFile(const std::string &dbpath) {
   if (!std::filesystem::exists(dbpath)) {
     throw std::runtime_error("Database file does not exist.");
   }
@@ -37,7 +37,7 @@ void PatientDatabase::LoadPatientsJsonFile(const std::string& dbpath) {
   }
 }
 
-void PatientDatabase::SavePatientsJsonFile(const std::string& dbpath) {
+void PatientDatabase::SavePatientsJsonFile(const std::string &dbpath) {
   nlohmann::json db;
   for (const auto &[id, p] : patients_) {
     nlohmann::json patient;

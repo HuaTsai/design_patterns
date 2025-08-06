@@ -3,7 +3,8 @@
 #include <iostream>
 #include <utility>
 
-UNOCardGame::UNOCardGame(std::shared_ptr<Deck> deck, const std::vector<std::shared_ptr<Player>>& players)
+UNOCardGame::UNOCardGame(std::shared_ptr<Deck> deck,
+                         const std::vector<std::shared_ptr<Player>> &players)
     : CardGame(deck, players, kUNOInitialCards) {}
 
 void UNOCardGame::PlayPhase() {

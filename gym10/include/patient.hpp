@@ -27,7 +27,8 @@ inline std::string GetStringFromGender(const Gender &gender) {
 
 class Patient {
  public:
-  Patient(const std::string& id, const std::string& name, Gender gender, int age, double height, double weight);
+  Patient(const std::string &id, const std::string &name, Gender gender, int age, double height,
+          double weight);
 
   void AddCase(const Case &c);
 

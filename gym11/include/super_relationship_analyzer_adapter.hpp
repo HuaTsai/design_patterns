@@ -6,8 +6,9 @@
 
 class SuperRelationshipAnalyzerAdapter : public RelationshipAnalyzer {
  public:
-  std::shared_ptr<RelationshipGraph> Parse(const std::string& script) override;
-  std::vector<std::string> GetMutualFriends(const std::string& name1, const std::string& name2) override;
+  std::shared_ptr<RelationshipGraph> Parse(const std::string &script) override;
+  std::vector<std::string> GetMutualFriends(const std::string &name1,
+                                            const std::string &name2) override;
 
  private:
   std::shared_ptr<SuperRelationshipAnalyzer> analyzer_;

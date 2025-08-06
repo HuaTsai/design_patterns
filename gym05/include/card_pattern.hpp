@@ -7,7 +7,7 @@
 
 class CardPattern {
  public:
-  explicit CardPattern(const std::vector<std::shared_ptr<Card>>& cards, const std::string& name);
+  explicit CardPattern(const std::vector<std::shared_ptr<Card>> &cards, const std::string &name);
   virtual ~CardPattern() = default;
   std::strong_ordering operator<=>(const CardPattern &other) const;
   std::string string() const;
@@ -30,11 +30,11 @@ std::ostream &operator<<(std::ostream &os, std::shared_ptr<CardPattern> card);
 class CardPatternRecognizer {
  public:
   explicit CardPatternRecognizer(std::shared_ptr<CardPatternRecognizer> next = nullptr);
-  virtual bool Match(const std::vector<std::shared_ptr<Card>>& cards) const = 0;
+  virtual bool Match(const std::vector<std::shared_ptr<Card>> &cards) const = 0;
   virtual std::shared_ptr<CardPattern> CreateConcreteCardPatternImpl(
-      const std::vector<std::shared_ptr<Card>>& cards) const = 0;
+      const std::vector<std::shared_ptr<Card>> &cards) const = 0;
   std::shared_ptr<CardPattern> CreateConcreteCardPattern(
-      const std::vector<std::shared_ptr<Card>>& cards) const;
+      const std::vector<std::shared_ptr<Card>> &cards) const;
 
  private:
   std::shared_ptr<CardPatternRecognizer> next_;

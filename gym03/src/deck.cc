@@ -43,10 +43,10 @@ std::shared_ptr<Card> Deck::Deal() {
   return card;
 }
 
-void Deck::AddCards(const std::vector<std::shared_ptr<Card>>& cards) {
+void Deck::AddCards(const std::vector<std::shared_ptr<Card>> &cards) {
   cards_.insert(cards_.end(), cards.begin(), cards.end());
 }
 
 bool Deck::IsEmpty() const { return cards_.empty(); }
 
-Deck::Deck(const std::vector<std::shared_ptr<Card>>& cards) : cards_(cards) {}
+Deck::Deck(const std::vector<std::shared_ptr<Card>> &cards) : cards_(cards) {}

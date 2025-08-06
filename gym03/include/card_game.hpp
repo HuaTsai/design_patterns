@@ -5,7 +5,7 @@
 
 class CardGame {
  public:
-  CardGame(std::shared_ptr<Deck> deck, const std::vector<std::shared_ptr<Player>>& players,
+  CardGame(std::shared_ptr<Deck> deck, const std::vector<std::shared_ptr<Player>> &players,
            int player_initial_cards);
 
   virtual ~CardGame() = default;

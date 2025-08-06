@@ -8,7 +8,7 @@ class Troop;
 
 class Role : public std::enable_shared_from_this<Role> {
  public:
-  explicit Role(std::shared_ptr<Troop> troop, const std::string& name, int hp, int mp, int str);
+  explicit Role(std::shared_ptr<Troop> troop, const std::string &name, int hp, int mp, int str);
 
   virtual ~Role() = default;
   Role(const Role &) = delete;
