@@ -36,7 +36,7 @@ jobs:
 
     - name: Configure CMake
       run: |
-        apt install nlohmann-json3-dev
+        sudo apt install -y nlohmann-json3-dev
         cmake -B build
 
     - name: Build
