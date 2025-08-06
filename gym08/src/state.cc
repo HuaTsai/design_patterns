@@ -35,11 +35,8 @@ std::shared_ptr<State> State::CreateStateFromTreasure(const std::shared_ptr<Trea
   return std::make_shared<NormalState>(role);
 }
 
-State::State(const std::shared_ptr<Role> &role, std::string name, int remaining_turns)
-    : role_(role),
-      name_(std::move(name)),
-      remaining_turns_(remaining_turns),
-      pending_state_(nullptr) {}
+State::State(const std::shared_ptr<Role> &role, const std::string &name, int remaining_turns)
+    : role_(role), name_(name), remaining_turns_(remaining_turns), pending_state_(nullptr) {}
 
 void State::RoundStartEvent() {
   // Hook of round start event for subclasses

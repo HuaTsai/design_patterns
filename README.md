@@ -28,6 +28,7 @@ This project demonstrates various design patterns in C++ through a series of exa
 ## Build
 
 - Tools:
+  - `nlohmann-json3-dev`
   - `cmake >= 3.10`
   - `g++-14`
   - `clang-format`

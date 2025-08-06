@@ -190,16 +190,17 @@ void Game::AttackInDirection(int start_row, int start_col, int delta_row, int de
 
 void Game::HandleDirectionalAttack(int row, int col, Direction dir) {
   switch (dir) {
-    case Direction::kUp:
+    using enum Direction;
+    case kUp:
       AttackInDirection(row, col, -1, 0);
       break;
-    case Direction::kDown:
+    case kDown:
       AttackInDirection(row, col, 1, 0);
       break;
-    case Direction::kLeft:
+    case kLeft:
       AttackInDirection(row, col, 0, -1);
       break;
-    case Direction::kRight:
+    case kRight:
       AttackInDirection(row, col, 0, 1);
       break;
   }
@@ -207,21 +208,23 @@ void Game::HandleDirectionalAttack(int row, int col, Direction dir) {
 
 void Game::ProcessMoveCommand(Options cmd, int &row, int &col) {
   switch (cmd) {
-    case Options::kMoveUp:
+    using enum Options;
+    using enum Direction;
+    case kMoveUp:
       --row;
-      character_->Turn(Direction::kUp);
+      character_->Turn(kUp);
       break;
-    case Options::kMoveDown:
+    case kMoveDown:
       ++row;
-      character_->Turn(Direction::kDown);
+      character_->Turn(kDown);
       break;
-    case Options::kMoveLeft:
+    case kMoveLeft:
       --col;
-      character_->Turn(Direction::kLeft);
+      character_->Turn(kLeft);
       break;
-    case Options::kMoveRight:
+    case kMoveRight:
       ++col;
-      character_->Turn(Direction::kRight);
+      character_->Turn(kRight);
       break;
     default:
       break;
@@ -244,16 +247,17 @@ void Game::ExecuteMovement(Options cmd) {
 
   map_objects_[character_->row()][character_->col()].reset();
   switch (cmd) {
-    case Options::kMoveUp:
+    using enum Options;
+    case kMoveUp:
       character_->Move(Direction::kUp);
       break;
-    case Options::kMoveDown:
+    case kMoveDown:
       character_->Move(Direction::kDown);
       break;
-    case Options::kMoveLeft:
+    case kMoveLeft:
       character_->Move(Direction::kLeft);
       break;
-    case Options::kMoveRight:
+    case kMoveRight:
       character_->Move(Direction::kRight);
       break;
     default:
@@ -319,7 +323,7 @@ void Game::MonsterAction(const std::shared_ptr<Monster> &monster) {
 }
 
 void Game::DrawMap() const {
-  std::print("\033[2J\033[1;1H");  // magic code to clear screen
+  std::print("\x{1b}[2J\x{1b}[1;1H");  // magic code to clear screen
   std::string top("╔");
   for (int i = 0; i < kMapSize * 2 + 1; ++i) {
     top += "═";

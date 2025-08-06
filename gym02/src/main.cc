@@ -38,7 +38,7 @@ int main() {
   // auto strategy = std::shared_ptr<Strategy>(new HabitStrategy(individuals));
   auto strategy = std::shared_ptr<Strategy>(new DistanceStrategy(individuals));
 
-  auto &s = *strategy;  // avoid clang warning
+  const auto &s = *strategy;  // avoid clang warning
   if (typeid(s) == typeid(HabitStrategy)) {
     std::print("Use habitStrategy\n");
   } else if (typeid(s) == typeid(DistanceStrategy)) {

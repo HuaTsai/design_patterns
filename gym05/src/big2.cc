@@ -108,4 +108,4 @@ void Big2::RoundStart() {
   ++round;
 }
 
-void Big2::ShowWinner() { std::print("遊戲結束，遊戲的勝利者為 {}\n", winner_->name()); }
+void Big2::ShowWinner() const { std::print("遊戲結束，遊戲的勝利者為 {}\n", winner_->name()); }
