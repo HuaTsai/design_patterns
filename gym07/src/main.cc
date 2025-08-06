@@ -59,7 +59,7 @@ void BindMacroCommandInstruction(const std::vector<Cmd> &cmds, std::shared_ptr<K
   std::vector<std::shared_ptr<Command>> macro;
   int cmd = 0;
   while (ss >> cmd) {
-    macro.push_back(cmds[cmd].cmd);
+    macro.push_back(cmds.at(cmd).cmd);
   }
   keyboard->BindOperation(c[0], macro);
 }

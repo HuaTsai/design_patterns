@@ -21,7 +21,7 @@ std::shared_ptr<Skill> AI::S1Input() {
       return nullptr;
     }
 
-    const auto &skill = allskills[input - 1];
+    const auto &skill = allskills.at(input - 1);
     if (skill->mp_cost() > mp()) {
       std::println("你缺乏 MP，不能進行此行動。");
 
