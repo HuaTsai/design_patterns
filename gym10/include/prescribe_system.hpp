@@ -5,11 +5,11 @@
 
 class PrescribeSystem {
  public:
-  PrescribeSystem(std::string dbpath, std::string supportpath);
-  Prescription Prescribe(std::string name, const std::vector<Symptom> &symptoms);
-  void SavePrescriptionToFile(std::string filepath, std::string name,
+  PrescribeSystem(const std::string &dbpath, const std::string &supportpath);
+  Prescription Prescribe(const std::string &name, const std::vector<Symptom> &symptoms);
+  void SavePrescriptionToFile(const std::string &filepath, const std::string &name,
                               const Prescription &prescription);
-  void SaveCaseToDatabase(std::string filepath, std::string name, const Case &c);
+  void SaveCaseToDatabase(const std::string &filepath, const std::string &name, const Case &c);
 
  private:
   Prescriber prescriber_;

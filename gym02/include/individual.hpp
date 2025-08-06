@@ -38,4 +38,4 @@ struct std::formatter<Individual> : formatter<string> {
   }
 };
 
-std::ostream &operator<<(std::ostream &os, const Individual &card);
+std::ostream &operator<<(std::ostream &os, const Individual &individual);

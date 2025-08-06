@@ -2,7 +2,7 @@
 #include <role.hpp>
 #include <troop.hpp>
 
-Role::Role(std::shared_ptr<Troop> troop, std::string name, int hp, int mp, int str)
+Role::Role(std::shared_ptr<Troop> troop, const std::string &name, int hp, int mp, int str)
     : troop_(troop), name_(name), hp_(hp), mp_(mp), str_(str) {}
 
 void Role::AddSkill(const std::string &name) {

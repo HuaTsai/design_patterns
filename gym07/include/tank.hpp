@@ -2,6 +2,6 @@
 
 class Tank {
  public:
-  void MoveForward();
-  void MoveBackward();
+  static void MoveForward();
+  static void MoveBackward();
 };

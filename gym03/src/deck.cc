@@ -35,7 +35,7 @@ std::shared_ptr<Deck> Deck::CreatePokerDeck() {
 void Deck::Shuffle() { std::ranges::shuffle(cards_, std::default_random_engine{}); }
 
 std::shared_ptr<Card> Deck::Deal() {
-  if (!cards_.size()) {
+  if (cards_.empty()) {
     throw std::out_of_range("No cards left in the deck");
   }
   auto card = cards_.back();
@@ -43,10 +43,10 @@ std::shared_ptr<Card> Deck::Deal() {
   return card;
 }
 
-void Deck::AddCards(std::vector<std::shared_ptr<Card>> cards) {
+void Deck::AddCards(const std::vector<std::shared_ptr<Card>> &cards) {
   cards_.insert(cards_.end(), cards.begin(), cards.end());
 }
 
 bool Deck::IsEmpty() const { return cards_.empty(); }
 
-Deck::Deck(std::vector<std::shared_ptr<Card>> cards) : cards_(cards) {}
+Deck::Deck(const std::vector<std::shared_ptr<Card>> &cards) : cards_(cards) {}

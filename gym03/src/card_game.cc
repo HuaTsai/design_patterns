@@ -1,8 +1,9 @@
 #include "card_game.hpp"
 
 #include <iostream>
+#include <print>
 
-CardGame::CardGame(std::shared_ptr<Deck> deck, std::vector<std::shared_ptr<Player>> players,
+CardGame::CardGame(std::shared_ptr<Deck> deck, const std::vector<std::shared_ptr<Player>> &players,
                    int player_initial_cards)
     : deck_(deck), players_(players), player_initial_cards_(player_initial_cards) {}
 
@@ -33,15 +34,15 @@ void CardGame::ScorePhase() const {
     }
   }
   if (winners.size() == 1) {
-    std::cout << "\nThe winner is: " << winners[0] << "\n";
+    std::print("\nThe winner is: {}\n", winners[0]);
   } else {
-    std::cout << "\nThe winners are: ";
+    std::print("\nThe winners are: ");
     for (size_t i = 0; i < winners.size(); i++) {
-      std::cout << winners[i];
+      std::print("{}", winners[i]);
       if (i < winners.size() - 1) {
-        std::cout << ", ";
+        std::print(", ");
       }
     }
-    std::cout << "\n";
+    std::print("\n");
   }
 }

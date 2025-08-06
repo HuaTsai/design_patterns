@@ -13,7 +13,7 @@ class Big2 {
   void ShuffleCards();
   void DealCards();
   void RoundStart();
-  void ShowWinner();
+  void ShowWinner() const;
 
  private:
   std::vector<std::shared_ptr<Player>> players_;

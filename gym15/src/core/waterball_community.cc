@@ -45,7 +45,5 @@ void WaterballCommunity::Wait(int amount, TimeUnit unit) {
 
 void WaterballCommunity::ConsumeQuota(int amount) {
   quota_ -= amount;
-  if (quota_ < 0) {
-    quota_ = 0;
-  }
+  quota_ = std::max(quota_, 0);
 }

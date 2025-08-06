@@ -24,7 +24,7 @@ enum class Rank {
 class Card {
  public:
   Card() = delete;
-  explicit Card(std::string card);
+  explicit Card(const std::string &card);
   explicit Card(Suit suit, Rank rank);
   std::strong_ordering operator<=>(const Card &other) const;
   std::string string() const;

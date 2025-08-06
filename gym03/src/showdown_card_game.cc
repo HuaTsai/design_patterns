@@ -1,10 +1,10 @@
 #include "showdown_card_game.hpp"
 
-#include <iostream>
+#include <print>
 #include <utility>
 
 ShowdownCardGame::ShowdownCardGame(std::shared_ptr<Deck> deck,
-                                   std::vector<std::shared_ptr<Player>> players)
+                                   const std::vector<std::shared_ptr<Player>> &players)
     : CardGame(deck, players, kShowdownInitialCards) {}
 
 void ShowdownCardGame::PlayPhase() {
@@ -21,10 +21,10 @@ void ShowdownCardGame::PlayPhase() {
       }
     }
 
-    std::cout << std::format("\nTurn {}:\n", turn);
+    std::print("\nTurn {}:\n", turn);
     for (size_t i = 0; i < players().size(); ++i) {
-      std::cout << std::format("{} plays {}{}\n", players()[i]->name(), cards[i],
-                               (std::cmp_equal(i, max_idx) ? "*" : ""));
+      std::print("{} plays {}{}\n", players()[i]->name(), cards[i],
+                 (std::cmp_equal(i, max_idx) ? "*" : ""));
     }
     players()[max_idx]->AddPoint();
   }

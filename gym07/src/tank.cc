@@ -1,7 +1,8 @@
 #include "tank.hpp"
 
 #include <iostream>
+#include <print>
 
-void Tank::MoveForward() { std::cout << "The tank has moved forward.\n"; }
+void Tank::MoveForward() { std::print("The tank has moved forward.\n"); }
 
-void Tank::MoveBackward() { std::cout << "The tank has moved backward.\n"; }
+void Tank::MoveBackward() { std::print("The tank has moved backward.\n"); }

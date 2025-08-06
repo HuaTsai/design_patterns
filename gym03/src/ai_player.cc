@@ -1,6 +1,7 @@
 #include "ai_player.hpp"
 
 #include <iostream>
+#include <print>
 #include <random>
 
 #include "uno_card.hpp"
@@ -16,7 +17,7 @@ void AIPlayer::NameSelf() {
   std::mt19937 gen(std::random_device{}());
   std::uniform_int_distribution<> dis(0, static_cast<int>(name_candidates.size()) - 1);
   set_name(name_candidates.at(dis(gen)));
-  std::cerr << "AI chooses name " << name() << "\n";
+  std::print(stderr, "AI chooses name {}\n", name());
 }
 
 std::shared_ptr<Card> AIPlayer::Show() {

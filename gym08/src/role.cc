@@ -1,7 +1,7 @@
 #include <role.hpp>
 
-Role::Role(std::string symbol, int row, int col, int hp, int power)
-    : MapObject(std::move(symbol), row, col), hp_(hp), max_hp_(hp), power_(power) {}
+Role::Role(const std::string &symbol, int row, int col, int hp, int power)
+    : MapObject(symbol, row, col), hp_(hp), max_hp_(hp), power_(power) {}
 
 void Role::SetDefaultState() { state_ = std::make_shared<NormalState>(shared_from_this()); }
 

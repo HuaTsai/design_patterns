@@ -1,6 +1,6 @@
 #include "cancel_collision.hpp"
 
-#include <iostream>
+#include <print>
 
 bool CancelCollision::Match(std::vector<std::shared_ptr<Sprite>> &sprites, int x1, int x2) {
   auto &s1 = *sprites[x1].get();
@@ -18,7 +18,7 @@ bool CancelCollision::Match(std::vector<std::shared_ptr<Sprite>> &sprites, int x
 }
 
 void CancelCollision::CollideImpl(std::vector<std::shared_ptr<Sprite>> &sprites, int x1, int x2) {
-  std::cout << "Water and fire are cancelled\n";
+  std::print("Water and fire are cancelled\n");
   sprites[x1].reset();
   sprites[x2].reset();
 }

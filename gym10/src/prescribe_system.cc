@@ -3,17 +3,18 @@
 #include <nlohmann/json.hpp>
 #include <prescribe_system.hpp>
 
-PrescribeSystem::PrescribeSystem(std::string dbpath, std::string supportpath) {
+PrescribeSystem::PrescribeSystem(const std::string &dbpath, const std::string &supportpath) {
   prescriber_.LoadSupportedPotentialDiseases(supportpath);
   database_.LoadPatientsJsonFile(dbpath);
 }
 
-Prescription PrescribeSystem::Prescribe(std::string name, const std::vector<Symptom> &symptoms) {
+Prescription PrescribeSystem::Prescribe(const std::string &name,
+                                        const std::vector<Symptom> &symptoms) {
   auto patient = database_.GetPatientByName(name);
   return prescriber_.Prescribe(patient, symptoms);
 }
 
-void PrescribeSystem::SavePrescriptionToFile(std::string filepath, std::string name,
+void PrescribeSystem::SavePrescriptionToFile(const std::string &filepath, const std::string &name,
                                              const Prescription &prescription) {
   const std::filesystem::path path(filepath);
   auto patient = database_.GetPatientByName(name);
@@ -51,7 +52,8 @@ void PrescribeSystem::SavePrescriptionToFile(std::string filepath, std::string n
   }
 }
 
-void PrescribeSystem::SaveCaseToDatabase(std::string filepath, std::string name, const Case &c) {
+void PrescribeSystem::SaveCaseToDatabase(const std::string &filepath, const std::string &name,
+                                         const Case &c) {
   auto &patient = database_.GetPatientByName(name);
   patient.AddCase(c);
   database_.SavePatientsJsonFile(filepath);

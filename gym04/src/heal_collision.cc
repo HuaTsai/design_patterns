@@ -1,6 +1,6 @@
 #include "heal_collision.hpp"
 
-#include <iostream>
+#include <print>
 
 bool HealCollision::Match(std::vector<std::shared_ptr<Sprite>> &sprites, int x1, int x2) {
   auto &s1 = *sprites[x1].get();
@@ -18,7 +18,7 @@ bool HealCollision::Match(std::vector<std::shared_ptr<Sprite>> &sprites, int x1,
 }
 
 void HealCollision::CollideImpl(std::vector<std::shared_ptr<Sprite>> &sprites, int x1, int x2) {
-  std::cout << "Hero collided with water and is healed\n";
+  std::print("Hero collided with water and is healed\n");
   auto p1 = dynamic_pointer_cast<HeroSprite>(sprites[x1]);
   if (p1) {
     dynamic_pointer_cast<HeroSprite>(sprites[x1])->Heal(10);

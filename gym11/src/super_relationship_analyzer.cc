@@ -2,7 +2,7 @@
 #include <sstream>
 #include <super_relationship_analyzer.hpp>
 
-void SuperRelationshipAnalyzer::Init(std::string script) {
+void SuperRelationshipAnalyzer::Init(const std::string &script) {
   std::ifstream ifs(script);
   if (!ifs) {
     throw std::runtime_error("Error opening input file");
@@ -25,8 +25,8 @@ void SuperRelationshipAnalyzer::Init(std::string script) {
   ifs.close();
 }
 
-bool SuperRelationshipAnalyzer::IsMutualFriend(std::string target_name, std::string name1,
-                                               std::string name2) {
+bool SuperRelationshipAnalyzer::IsMutualFriend(const std::string &target_name,
+                                               const std::string &name1, const std::string &name2) {
   if (target_name == name1 || target_name == name2) {
     return false;
   }
@@ -36,6 +36,6 @@ bool SuperRelationshipAnalyzer::IsMutualFriend(std::string target_name, std::str
   return false;
 }
 
-bool SuperRelationshipAnalyzer::HasConnection(std::string name1, std::string name2) {
+bool SuperRelationshipAnalyzer::HasConnection(const std::string &name1, const std::string &name2) {
   return union_find_.IsConnected(name1, name2);
 }

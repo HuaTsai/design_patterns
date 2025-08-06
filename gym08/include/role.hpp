@@ -7,7 +7,7 @@
 
 class Role : public MapObject, public std::enable_shared_from_this<Role> {
  public:
-  explicit Role(std::string symbol, int row, int col, int hp, int power);
+  explicit Role(const std::string &symbol, int row, int col, int hp, int power);
 
   void SetDefaultState();
   void Move(Direction direction);

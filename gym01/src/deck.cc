@@ -6,7 +6,7 @@
 Deck::Deck() {
   for (int i = 1; i <= kNumOfRanks; ++i) {
     using enum Suit;
-    for (Suit suit : {Club, Diamond, Heart, Spade}) {
+    for (const Suit suit : {Club, Diamond, Heart, Spade}) {
       cards_.push_back(std::make_shared<Card>(i, suit));
     }
   }

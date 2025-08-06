@@ -9,7 +9,7 @@ class State {
  public:
   static std::shared_ptr<State> CreateStateFromTreasure(const std::shared_ptr<Treasure> &treasure,
                                                         const std::shared_ptr<Role> &role);
-  explicit State(const std::shared_ptr<Role> &role, std::string name, int remaining_turns);
+  explicit State(const std::shared_ptr<Role> &role, const std::string &name, int remaining_turns);
 
   virtual ~State() = default;
   State(const State &) = delete;

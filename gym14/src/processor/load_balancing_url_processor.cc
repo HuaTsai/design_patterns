@@ -9,7 +9,7 @@ std::vector<std::string> LoadBalancingUrlProcessor::SendRequest(
     return {};
   }
 
-  auto ret = urls[++id_ % urls.size()];
+  const auto &ret = urls[++id_ % urls.size()];
   if (next_) {
     return next_->SendRequest({ret});
   }

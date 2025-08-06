@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <print>
 #include <random>
 
 #include "ai_player.hpp"
@@ -9,8 +10,8 @@
 #include "uno_card_game.hpp"
 
 int main() {
-  std::cout << "Welcome to Card Game!\nShowdown(0) or UNO(1)? ";
-  int gametype;
+  std::print("Welcome to Card Game!\nShowdown(0) or UNO(1)? ");
+  int gametype = 0;
   std::cin >> gametype;
 
   std::shared_ptr<Deck> deck;
@@ -22,8 +23,8 @@ int main() {
     throw std::runtime_error("Invalid game type");
   }
 
-  std::cout << "Enter number of ai players (0-4)? ";
-  int num_ai;
+  std::print("Enter number of ai players (0-4)? ");
+  int num_ai = 0;
   std::cin >> num_ai;
   if (num_ai < 0 || num_ai > 4) {
     throw std::runtime_error("Invalid number of AI players");

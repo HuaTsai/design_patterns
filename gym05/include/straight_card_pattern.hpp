@@ -8,7 +8,7 @@ class StraightCardPattern : public CardPattern {
 class StraightCardPatternRecognizer : public CardPatternRecognizer {
  public:
   using CardPatternRecognizer::CardPatternRecognizer;
-  bool Match(std::vector<std::shared_ptr<Card>> cards) const override;
+  bool Match(const std::vector<std::shared_ptr<Card>> &cards) const override;
   std::shared_ptr<CardPattern> CreateConcreteCardPatternImpl(
-      std::vector<std::shared_ptr<Card>> cards) const override;
+      const std::vector<std::shared_ptr<Card>> &cards) const override;
 };

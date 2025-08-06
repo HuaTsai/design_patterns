@@ -4,8 +4,8 @@
 
 class MapObject {
  public:
-  explicit MapObject(std::string symbol, int row, int col)
-      : symbol_(std::move(symbol)), row_(row), col_(col) {}
+  explicit MapObject(const std::string &symbol, int row, int col)
+      : symbol_(symbol), row_(row), col_(col) {}
 
   virtual ~MapObject() = default;
   MapObject(const MapObject &) = delete;
@@ -14,7 +14,7 @@ class MapObject {
   MapObject &operator=(MapObject &&) = delete;
 
   [[nodiscard]] std::string symbol() const { return symbol_; }
-  void set_symbol(std::string symbol) { symbol_ = std::move(symbol); }
+  void set_symbol(const std::string &symbol) { symbol_ = symbol; }
 
   [[nodiscard]] int row() const { return row_; }
   void set_row(int row) { row_ = row; }

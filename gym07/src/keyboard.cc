@@ -1,12 +1,15 @@
 #include "keyboard.hpp"
 
 #include <iostream>
+#include <print>
 #include <ranges>
 
 void Keyboard::Press(char key) {
-  if (!keymap_.count(key)) return;
+  if (!keymap_.contains(key)) {
+    return;
+  }
   bool reset_key = false;
-  for (auto cmd : keymap_[key]) {
+  for (const auto &cmd : keymap_[key]) {
     if (cmd) {
       cmd->Execute();
     } else {
@@ -26,11 +29,13 @@ void Keyboard::BindOperation(char key, std::vector<std::shared_ptr<Command>> cmd
 }
 
 void Keyboard::Undo() {
-  if (undo_history_.empty()) return;
+  if (undo_history_.empty()) {
+    return;
+  }
   auto cmds = undo_history_.top();
   undo_history_.pop();
   bool reset_key = false;
-  for (auto cmd : cmds | std::views::reverse) {
+  for (const auto &cmd : cmds | std::views::reverse) {
     if (cmd) {
       cmd->Undo();
     } else {
@@ -45,11 +50,13 @@ void Keyboard::Undo() {
 }
 
 void Keyboard::Redo() {
-  if (redo_history_.empty()) return;
+  if (redo_history_.empty()) {
+    return;
+  }
   auto cmds = redo_history_.top();
   redo_history_.pop();
   bool reset_key = false;
-  for (auto cmd : cmds) {
+  for (const auto &cmd : cmds) {
     if (cmd) {
       cmd->Execute();
     } else {
@@ -64,15 +71,15 @@ void Keyboard::Redo() {
 }
 
 void Keyboard::PrintKeymap() const {
-  for (auto [key, cmds] : keymap_) {
-    std::cout << key << ": ";
-    for (auto cmd : cmds) {
+  for (const auto &[key, cmds] : keymap_) {
+    std::print("{}: ", key);
+    for (const auto &cmd : cmds) {
       if (cmd) {
-        std::cout << cmd->name() << " ";
+        std::print("{} ", cmd->name());
       } else {
-        std::cout << "ResetMainControlKeyboard ";
+        std::print("ResetMainControlKeyboard ");
       }
     }
-    std::cout << std::endl;
+    std::print("\n");
   }
 }

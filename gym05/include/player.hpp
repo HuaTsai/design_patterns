@@ -14,7 +14,7 @@ class Player {
   bool HasClubThreeInHand();
   bool IsEmptyHandCards() const;
   void PrintHandCards() const;
-  virtual std::shared_ptr<CardPattern> FirstPlay(bool club_three_required = false) = 0;
+  virtual std::shared_ptr<CardPattern> FirstPlay(bool club_three_required) = 0;
   virtual std::shared_ptr<CardPattern> FollowPlay(std::shared_ptr<CardPattern> top_play) = 0;
 
   std::string name() const;

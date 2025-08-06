@@ -20,7 +20,7 @@ class Skill {
  public:
   static std::shared_ptr<Skill> Create(const std::string &name, std::shared_ptr<Role> role);
 
-  explicit Skill(std::string name, int mp_cost, std::shared_ptr<Role> role)
+  explicit Skill(const std::string &name, int mp_cost, std::shared_ptr<Role> role)
       : name_(name), mp_cost_(mp_cost), role_(role) {}
 
   virtual ~Skill() = default;

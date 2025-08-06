@@ -1,15 +1,16 @@
 #include "human_player.hpp"
 
 #include <iostream>
+#include <print>
 #include <utility>
 
 #include "uno_card.hpp"
 
 void HumanPlayer::NameSelf() {
   std::string name;
-  std::cout << "Enter player's name? ";
+  std::print("Enter player's name? ");
   std::cin >> name;
-  std::cout << "OKay\n";
+  std::print("OKay\n");
   set_name(name);
 }
 
@@ -30,11 +31,11 @@ std::shared_ptr<Card> HumanPlayer::Show() {
     return nullptr;
   }
 
-  std::cout << std::format("\n{}'s hand:\n", name());
+  std::print("\n{}'s hand:\n", name());
   for (size_t i = 0; i < options.size(); ++i) {
-    std::cout << std::format("{}) {}\n", i + 1, options[i]);
+    std::print("{}) {}\n", i + 1, options[i]);
   }
-  std::cout << std::format("? (1-{}) ", options.size());
+  std::print("? (1-{}) ", options.size());
   int idx = 0;
   std::cin >> idx;
   if (idx < 1 || std::cmp_greater(idx, options.size())) {
