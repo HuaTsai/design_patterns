@@ -29,7 +29,7 @@ void State::Action() {
 }
 
 void State::Attack(std::shared_ptr<Role> target, int hp) {
-  std::println("{} 對 {} 造成 {} 點傷害。", role()->name(), target->name(), hp);
+  std::print("{} 對 {} 造成 {} 點傷害。\n", role()->name(), target->name(), hp);
   target->TakeDamage(hp);
 }
 

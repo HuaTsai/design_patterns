@@ -80,8 +80,8 @@ void RPG::Battle() {
       continue;
     }
 
-    std::println("輪到 {} (HP: {}, MP: {}, STR: {}, State: {})。", role->name(), role->hp(),
-                 role->mp(), role->str(), role->StateName());
+    std::print("輪到 {} (HP: {}, MP: {}, STR: {}, State: {})。\n", role->name(), role->hp(),
+               role->mp(), role->str(), role->StateName());
     role->Action();
     if (IsGameOver()) {
       return;
@@ -94,8 +94,8 @@ void RPG::Battle() {
       continue;
     }
 
-    std::println("輪到 {} (HP: {}, MP: {}, STR: {}, State: {})。", role->name(), role->hp(),
-                 role->mp(), role->str(), role->StateName());
+    std::print("輪到 {} (HP: {}, MP: {}, STR: {}, State: {})。\n", role->name(), role->hp(),
+               role->mp(), role->str(), role->StateName());
     role->Action();
     if (IsGameOver()) {
       return;
@@ -105,8 +105,8 @@ void RPG::Battle() {
 
 void RPG::ShowWinner() {
   if (hero_->IsDead()) {
-    std::println("你失敗了！");
+    std::print("你失敗了！\n");
   } else {
-    std::println("你獲勝了！");
+    std::print("你獲勝了！\n");
   }
 }

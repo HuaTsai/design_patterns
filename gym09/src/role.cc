@@ -16,7 +16,7 @@ void Role::Attack(std::shared_ptr<Role> target, int hp) { state_->Attack(target,
 void Role::TakeDamage(int damage) {
   hp_ -= damage;
   if (hp_ <= 0) {
-    std::println("{} 死亡。", name_);
+    std::print("{} 死亡。\n", name_);
     for (const auto &curser : cursers_) {
       if (auto curser_ptr = curser.lock(); curser_ptr->IsAlive()) {
         curser_ptr->Heal(mp_);
@@ -37,7 +37,7 @@ void Role::ActionStartEvent() { state_->ActionStartEvent(); }
 void Role::ActionEndEvent() { state_->ActionEndEvent(); }
 
 void Role::BasicAttack(std::shared_ptr<Role> target) {
-  std::println("{} 攻擊 {}。", name_, target->name());
+  std::print("{} 攻擊 {}。\n", name_, target->name());
   Attack(target, str_);
 }
 

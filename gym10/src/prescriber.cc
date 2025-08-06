@@ -12,7 +12,7 @@
 Prescriber::Prescriber() : prescription_handler_(nullptr) {}
 
 Prescription Prescriber::Prescribe(const Patient &patient, const std::vector<Symptom> &symptoms) {
-  std::println("Prescribing {}...", patient.name());
+  std::print("Prescribing {}...\n", patient.name());
   std::this_thread::sleep_for(std::chrono::seconds(3));
   return prescription_handler_->Prescribe(patient, symptoms);
 }

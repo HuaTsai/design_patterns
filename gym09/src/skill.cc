@@ -38,7 +38,7 @@ std::vector<std::shared_ptr<Role>> OneEnemySkill::RequestForTargets() {
 void WaterballSkill::PerformSkill() {
   const int damage = 120;
   auto targets = RequestForTargets();
-  std::println("{} 對 {} 使用了 {}。", role()->name(), targets[0]->name(), name());
+  std::print("{} 對 {} 使用了 {}。\n", role()->name(), targets[0]->name(), name());
   role()->Attack(targets[0], damage);
   role()->ConsumeMp(mp_cost());
 }
@@ -54,7 +54,7 @@ void FireballSkill::PerformSkill() {
       std::print("{}, ", targets[i]->name());
     }
   }
-  std::println(" 使用了 {}。", name());
+  std::print(" 使用了 {}。\n", name());
   for (const auto &target : targets) {
     role()->Attack(target, damage);
   }
@@ -70,20 +70,20 @@ void SelfHealingSkill::PerformSkill() {
 
 void PetrochemicalSkill::PerformSkill() {
   auto targets = RequestForTargets();
-  std::println("{} 對 {} 使用了 {}。", role()->name(), targets[0]->name(), name());
+  std::print("{} 對 {} 使用了 {}。\n", role()->name(), targets[0]->name(), name());
   targets[0]->SetState(std::make_shared<PetrochemicalState>(targets[0]));
   role()->ConsumeMp(mp_cost());
 }
 
 void PoisonSkill::PerformSkill() {
   auto targets = RequestForTargets();
-  std::println("{} 對 {} 使用了 {}。", role()->name(), targets[0]->name(), name());
+  std::print("{} 對 {} 使用了 {}。\n", role()->name(), targets[0]->name(), name());
   targets[0]->SetState(std::make_shared<PoisonedState>(targets[0]));
   role()->ConsumeMp(mp_cost());
 }
 
 void SummonSkill::PerformSkill() {
-  std::println("{} 使用了 {}。", role()->name(), name());
+  std::print("{} 使用了 {}。\n", role()->name(), name());
   const std::string prefix = role()->name().substr(0, 3);
   auto slime = std::make_shared<Slime>(role()->troop(), prefix + "Slime", role());
   slime->SetState(std::make_shared<NormalState>(slime));
@@ -112,7 +112,7 @@ void SelfExplosionSkill::PerformSkill() {
       std::print("{}, ", targets[i]->name());
     }
   }
-  std::println(" 使用了 {}。", name());
+  std::print(" 使用了 {}。\n", name());
   for (const auto &target : targets) {
     role()->Attack(target, damage);
   }
@@ -128,7 +128,7 @@ void CheerupSkill::PerformSkill() {
   }
 
   if (targets.empty()) {
-    std::println("{} 使用了 {}。", role()->name(), name());
+    std::print("{} 使用了 {}。\n", role()->name(), name());
     role()->ConsumeMp(mp_cost());
     return;
   }
@@ -145,7 +145,7 @@ void CheerupSkill::PerformSkill() {
       std::print("{}, ", targets[i]->name());
     }
   }
-  std::println(" 使用了 {}。", name());
+  std::print(" 使用了 {}。\n", name());
   for (const auto &target : targets) {
     target->SetState(std::make_shared<CheerupState>(target));
   }
@@ -154,14 +154,14 @@ void CheerupSkill::PerformSkill() {
 
 void CurseSkill::PerformSkill() {
   auto targets = RequestForTargets();
-  std::println("{} 對 {} 使用了 {}。", role()->name(), targets[0]->name(), name());
+  std::print("{} 對 {} 使用了 {}。\n", role()->name(), targets[0]->name(), name());
   targets[0]->AddCurser(role());
   role()->ConsumeMp(mp_cost());
 }
 
 void OnePunchSkill::PerformSkill() {
   auto targets = RequestForTargets();
-  std::println("{} 對 {} 使用了 {}。", role()->name(), targets[0]->name(), name());
+  std::print("{} 對 {} 使用了 {}。\n", role()->name(), targets[0]->name(), name());
   // NOLINTBEGIN
   if (targets[0]->hp() >= 500) {
     role()->Attack(targets[0], 300);
