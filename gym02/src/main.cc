@@ -14,19 +14,20 @@ int main() {
   // std::make_shared<Individual>(1, Gender::kMale, 20, std::string(201, ' '),
   // "Basketball", Coord{1, 2});
 
-  auto p1 =
-      std::make_shared<Individual>(1, Gender::kMale, 20, "Hi, I am p1", "Basketball", Coord{1, 2});
+  auto p1 = std::make_shared<Individual>(1, Gender::kMale, 20, "Hi, I am p1", "Basketball",
+                                         Coord{.x = 1, .y = 2});
   std::print("Create p1:\n{}\n", *p1);
 
-  auto p2 =
-      std::make_shared<Individual>(2, Gender::kFemale, 22, "Hi, I am p2", "Swimming", Coord{3, 4});
+  auto p2 = std::make_shared<Individual>(2, Gender::kFemale, 22, "Hi, I am p2", "Swimming",
+                                         Coord{.x = 3, .y = 4});
   std::print("Create p2:\n{}\n", *p2);
 
   auto p3 = std::make_shared<Individual>(3, Gender::kFemale, 24, "Hi, I am p3",
-                                         "Basketball,Swimming", Coord{5, 6});
+                                         "Basketball,Swimming", Coord{.x = 5, .y = 6});
   std::print("Create p3:\n{}\n", *p3);
 
-  auto p4 = std::make_shared<Individual>(4, Gender::kMale, 26, "Hi, I am p4", "", Coord{7, 8});
+  auto p4 =
+      std::make_shared<Individual>(4, Gender::kMale, 26, "Hi, I am p4", "", Coord{.x = 7, .y = 8});
   std::print("Create p4:\n{}\n", *p4);
 
   // duplicate id

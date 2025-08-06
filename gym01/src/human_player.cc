@@ -2,6 +2,7 @@
 
 #include <print>
 #include <unordered_set>
+#include <utility>
 
 #include "game.hpp"
 
@@ -61,7 +62,7 @@ std::shared_ptr<Card> HumanPlayer::Show() {
 
   int idx = 0;
   std::cin >> idx;
-  if (idx <= 0 || idx > static_cast<int>(hand().size())) {
+  if (idx <= 0 || std::cmp_greater(idx, hand().size())) {
     throw std::runtime_error("Invlaid option!");
   }
 

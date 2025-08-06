@@ -2,8 +2,8 @@
 
 DisconnectTelecom::DisconnectTelecom(std::shared_ptr<Telecom> telecom) : telecom_(telecom) {}
 
-void DisconnectTelecom::Execute() { telecom_->Disconnect(); }
+void DisconnectTelecom::Execute() { Telecom::Disconnect(); }
 
-void DisconnectTelecom::Undo() { telecom_->Connect(); }
+void DisconnectTelecom::Undo() { Telecom::Connect(); }
 
 std::string DisconnectTelecom::name() const { return "DisconnectTelecom"; }

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <print>
 #include <sstream>
+#include <utility>
 
 std::shared_ptr<Skill> Hero::S1Input() {
   auto allskills = skills();
@@ -52,7 +53,7 @@ std::shared_ptr<Role> Hero::S2Input(const std::vector<std::shared_ptr<Role>> &ca
 
 std::vector<std::shared_ptr<Role>> Hero::S2InputMultiple(
     const std::vector<std::shared_ptr<Role>> &candidates, int slots) {
-  if (static_cast<int>(candidates.size()) <= slots) {
+  if (std::cmp_less_equal(candidates.size(), slots)) {
     return candidates;
   }
 

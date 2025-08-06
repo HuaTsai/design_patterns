@@ -1,5 +1,6 @@
 #include <ai.hpp>
 #include <print>
+#include <utility>
 
 AI::AI(std::shared_ptr<Troop> troop, std::string name, int hp, int mp, int str)
     : Role(troop, name, hp, mp, str), seed_(0) {}
@@ -47,7 +48,7 @@ std::shared_ptr<Role> AI::S2Input(const std::vector<std::shared_ptr<Role>> &cand
 
 std::vector<std::shared_ptr<Role>> AI::S2InputMultiple(
     const std::vector<std::shared_ptr<Role>> &candidates, int slots) {
-  if (static_cast<int>(candidates.size()) <= slots) {
+  if (std::cmp_less_equal(candidates.size(), slots)) {
     return candidates;
   }
   std::vector<std::shared_ptr<Role>> ret;
