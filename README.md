@@ -24,7 +24,7 @@ This project demonstrates various design patterns in C++ through a series of exa
 13. **Gym13**: Demonstrates the use of the Composite pattern in a logger system.
 14. **Gym14**: Implements the Decorator pattern in an HTTP client.
 15. **Gym15**: Demonstrates the use of Finite State Machine in a community system.
-16. **Gym16**: TODO
+16. **Gym16**: Demonstrates the use of the Singleton pattern in a matrix model loading system.
 
 ## Build
 
