@@ -27,7 +27,7 @@ else()
   message(WARNING "clang-tidy not found! Static analysis skipped.")
 endif()
 
-foreach(GYM_NUMBER RANGE 1 15)
+foreach(GYM_NUMBER RANGE 1 16)
   if(GYM_NUMBER LESS 10)
     set(GYM_DIR "gym0${GYM_NUMBER}")
   else()
