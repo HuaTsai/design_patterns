@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <genetic_algorithm_solver/crossover.hpp>
 #include <random>
-#include <algorithm>
 
 template <typename GeneType>
 class UniformCrossover : public Crossover<GeneType> {
@@ -31,9 +31,8 @@ class UniformCrossover : public Crossover<GeneType> {
             std::swap(offspring1.genes[j], offspring2.genes[j]);
           }
         }
-        
-        if (!this->is_valid() || 
-            (this->is_valid()(offspring1) && this->is_valid()(offspring2))) {
+
+        if (!this->is_valid() || (this->is_valid()(offspring1) && this->is_valid()(offspring2))) {
           ret.individuals.emplace_back(offspring1);
           ret.individuals.emplace_back(offspring2);
           break;

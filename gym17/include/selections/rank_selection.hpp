@@ -1,6 +1,6 @@
 #include <algorithm>
-#include <numeric>
 #include <genetic_algorithm_solver/selection.hpp>
+#include <numeric>
 
 template <typename GeneType>
 class RankSelection : public Selection<GeneType> {

@@ -26,7 +26,7 @@ class InversionMutate : public Mutate<GeneType> {
           mutated.individuals.emplace_back(candidate);
           break;
         }
-        
+
         if (++retry == 100) {
           mutated.individuals.emplace_back(individual);
           break;

@@ -20,9 +20,10 @@ class TournamentSelection : public Selection<GeneType> {
         group.individuals.emplace_back(population.individuals[indices[i]]);
       }
 
-      auto it = std::ranges::max_element(group.individuals, [&](const Individual<GeneType> &a, const Individual<GeneType> &b) {
-        return this->fitness_function()(a) < this->fitness_function()(b);
-      });
+      auto it = std::ranges::max_element(
+          group.individuals, [&](const Individual<GeneType> &a, const Individual<GeneType> &b) {
+            return this->fitness_function()(a) < this->fitness_function()(b);
+          });
       ret.individuals.emplace_back(*it);
     }
     return ret;

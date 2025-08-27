@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <genetic_algorithm_solver/crossover.hpp>
 #include <random>
-#include <algorithm>
 
 template <typename GeneType>
 class TwoPointCrossover : public Crossover<GeneType> {
@@ -33,24 +33,23 @@ class TwoPointCrossover : public Crossover<GeneType> {
 
         auto offspring1 = parents.individuals[indices[i]];
         auto offspring2 = parents.individuals[indices[i + 1]];
-        for (int j = x1; j <= x2; ++j) { 
+        for (int j = x1; j <= x2; ++j) {
           std::swap(offspring1.genes[j], offspring2.genes[j]);
         }
-        
-        if (!this->is_valid() || 
-            (this->is_valid()(offspring1) && this->is_valid()(offspring2))) {
+
+        if (!this->is_valid() || (this->is_valid()(offspring1) && this->is_valid()(offspring2))) {
           ret.individuals.emplace_back(offspring1);
           ret.individuals.emplace_back(offspring2);
           break;
         }
-        
+
         if (++retry == 100) {
           ret.individuals.emplace_back(parents.individuals[indices[i]]);
           ret.individuals.emplace_back(parents.individuals[indices[i + 1]]);
           break;
         }
       }
-    } 
+    }
     return ret;
   }
 };

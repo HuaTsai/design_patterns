@@ -2,12 +2,12 @@
 #include <crossovers/two_point_crossover.hpp>
 #include <crossovers/uniform_crossover.hpp>
 #include <genetic_algorithm_solver/genetic_algorithm_solver.hpp>
+#include <memory>
 #include <mutates/inversion_mutate.hpp>
 #include <mutates/random_replacement_mutate.hpp>
 #include <print>
 #include <selections/rank_selection.hpp>
 #include <selections/tournament_selection.hpp>
-#include <memory>
 
 void UsageScene1() {
   // Each schedule/individual has 600 tasks/genes

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <genetic_algorithm_solver/population.hpp>
 #include <functional>
+#include <genetic_algorithm_solver/population.hpp>
 
 template <typename GeneType>
 class Selection {
